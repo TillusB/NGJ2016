@@ -5,23 +5,35 @@ public class Bunny : MonoBehaviour {
     public int speed = 1;
     public float jumpforce = 15;
     float horizontalInput = 0;
+    float verticalInput = 0;
+    Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
-	
+        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        horizontalInput = Input.GetAxis("Horizontal");
-        if (horizontalInput != 0){
-            transform.Translate(new Vector3(speed * horizontalInput, 0, 0));
-        }
-        if(Input.GetAxis("Jump") != 0)
-        {
-            jump();
-        }
-            Debug.Log(horizontalInput);
+        
 	}
+
+    void FixedUpdate()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        if(isOnGround())
+            verticalInput = Input.GetAxis("Jump");
+        if ( verticalInput != 0)
+        {
+            //jump();
+        }
+        Vector3 movement = new Vector3(horizontalInput * speed, 0.0f, verticalInput * jumpforce);
+
+        Debug.Log(horizontalInput);
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            rb.velocity = movement;
+        }
+    }
 
     public void setSpeed(int newSpeed)
     {
