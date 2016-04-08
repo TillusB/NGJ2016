@@ -5,9 +5,11 @@ public class Bunny : MonoBehaviour {
     public int speed = 1;
     public float jumpforce = 15;
     float horizontalInput = 0;
+    bool OnGround = true;
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+    {
+
 	}
 	
 	// Update is called once per frame
@@ -20,7 +22,16 @@ public class Bunny : MonoBehaviour {
         {
             jump();
         }
-            Debug.Log(horizontalInput);
+        Debug.Log(horizontalInput);
+
+
+        bool OnGroundTest = isOnGround();
+        if(OnGroundTest != OnGround && gameObject.GetComponent<Rigidbody2D>().velocity.y <0)
+        {
+            GameCamera.instance.Shake();
+        }
+        OnGround = OnGroundTest;
+
 	}
 
     public void setSpeed(int newSpeed)
