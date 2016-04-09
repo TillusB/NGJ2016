@@ -17,7 +17,7 @@ public class KillerAreaManager : MonoBehaviour {
 	public List<KillerArea> areas = new List<KillerArea>();
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		if(ourInstance != null)
 		{
 			Destroy(gameObject);
@@ -26,11 +26,12 @@ public class KillerAreaManager : MonoBehaviour {
 		else
 			ourInstance = this;
 		player = GameObject.Find("Bunny");
+		bunny = player.GetComponent<Bunny>();
 	}
 
 	public void DamagePlayer(float damage)
 	{
-		//bunny.Damage(damage);
+		bunny.reduceHealth(damage);
 	}
 
 	public void AddKillerArea(KillerArea area)

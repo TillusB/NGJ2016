@@ -99,12 +99,12 @@ public class Bunny : MonoBehaviour {
         rb.AddForce(forceVector);
     }
 
-    public void reduceHealth(int amount)
+    public void reduceHealth(float amount)
     {
         health -= amount;
     }
 
-    public void increaseHealth(int amount)
+    public void increaseHealth(float amount)
     {
         health += amount;
     }
