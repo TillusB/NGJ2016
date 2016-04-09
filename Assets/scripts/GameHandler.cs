@@ -25,7 +25,7 @@ public class GameHandler : MonoBehaviour
     //  60...41 -> 3
     //  40...21 -> 2
     //  20...01 -> 1
-    //        0 -> dead
+    //        0 -> 0 dead
     int bunnyState;
 
     bool gameOver = false;
