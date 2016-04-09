@@ -14,7 +14,8 @@ public class Item : MonoBehaviour {
 
     public void OnEnable()
     {
-        ItemManager.GetInstance().AddItem(this);
+        if(ItemManager.GetInstance() != null)
+            ItemManager.GetInstance().AddItem(this);
     }
 
     public void OnDissable()
