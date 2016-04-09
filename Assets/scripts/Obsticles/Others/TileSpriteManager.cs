@@ -10,13 +10,23 @@ public class TileSpriteManager : MonoBehaviour {
 
 	public static TileSpriteManager GetInstance()
 	{
+		if(ourInstance == null)
+		{
+			GameObject temp = new GameObject("TimeSpriteManager");
+			ourInstance = temp.AddComponent<TileSpriteManager>();
+		}
 		return ourInstance;
 	}
 
+	public void AddSwapper(TileSpriteSwapper swapper)
+	{
+		if(!spriteSwapers.Contains(swapper))
+			spriteSwapers.Add(swapper);
+	}
 
 	// Use this for initialization
 	void Start () {
-		if(ourInstance != null)
+		if(ourInstance != null &&  ourInstance != this)
 		{
 			Destroy(gameObject);
 			return;
@@ -26,6 +36,7 @@ public class TileSpriteManager : MonoBehaviour {
 
 	public void UpdateSprites(int worldState)
 	{
+		Debug.LogError(worldState.ToString());
 		for(int index = 0; index < spriteSwapers.Count; index++)
 		{
 			spriteSwapers[index].StartSwapTo(worldState);
