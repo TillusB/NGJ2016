@@ -3,13 +3,11 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour {
-    GameObject player;
-    Bunny bunny;
+    public GameObject player;
+    public Bunny bunny;
     UnityEngine.UI.Slider healthBar;
 	// Use this for initialization
 	void Start () {
-        player = GameObject.Find("Bunny");
-        bunny = player.GetComponent<Bunny>();
         healthBar = gameObject.GetComponent<UnityEngine.UI.Slider>();
 	}
 	
