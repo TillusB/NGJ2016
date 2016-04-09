@@ -7,14 +7,13 @@
 	}
 	SubShader
 	{
-		Tags {"Queue" = "Transparent" }
-		LOD 100
-
-
+//		Tags {"Queue" = "Overlay" }
+		ZWrite Off
+	    Blend SrcAlpha OneMinusSrcAlpha     
+//	    Blend SrcAlpha One     
 
 		Pass
 		{
-		    Blend SrcAlpha OneMinusSrcAlpha     
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag	
@@ -42,7 +41,6 @@
 
 //				finalColor.a = floor((finalColor.a/0.1)*0.5) * 0.25; //4 colors
 				finalColor.a = floor((finalColor.a/0.1)*0.25) * 0.5; //2 colors 
-
 
 				return finalColor;
 			}

@@ -13,6 +13,7 @@ public class BloodSpurter : MonoBehaviour {
 
 	[SerializeField] float spurtInterval;
 	[SerializeField] ParticleSystem spurtSystem;
+	[SerializeField] ParticleSystem boostSystem;
 
 
 	public bool isBleeding = false;
@@ -48,5 +49,10 @@ public class BloodSpurter : MonoBehaviour {
 
 	public void StartBleeding(){
 		//TODO
+	}
+
+
+	public void Boosting(){
+		boostSystem.Play();
 	}
 }

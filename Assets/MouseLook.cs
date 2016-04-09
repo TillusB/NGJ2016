@@ -14,6 +14,6 @@ public class MouseLook : MonoBehaviour {
 
 		Vector2 dir = mousePos - (Vector2)transform.position;
 
-		transform.rotation = Quaternion.LookRotation(dir);
+		transform.rotation = Quaternion.LookRotation(dir) * Quaternion.Euler(0, -90, 0);
 	}
 }
