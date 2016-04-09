@@ -50,6 +50,8 @@ public class GameHandler : MonoBehaviour
         restartGameButton.gameObject.SetActive(false);
         gameOver = false;
 
+        bunny.ResurrectBunny();
+
         StartGame();
     }
 
@@ -82,8 +84,6 @@ public class GameHandler : MonoBehaviour
         var currentHealth = (float)bunny.getHealth();
         var currentBunnyState = Mathf.CeilToInt( currentHealth / Bunny.FullHealth * 5f);
 
-        Debug.Log(currentHealth / Bunny.FullHealth * 5f);
-
         Debug.Log(string.Format("health: {0}, bunnyState: {1}", bunny.getHealth(), currentBunnyState));
 
         if(currentBunnyState != bunnyState)
@@ -97,7 +97,6 @@ public class GameHandler : MonoBehaviour
 
     void AdjustBunnyState()
     {
-//        --bunnyState;
         // TODO: Adjust bunny sprite
 
         StartCoroutine(ShowStateText(stateTexts[bunnyState]));
@@ -106,8 +105,6 @@ public class GameHandler : MonoBehaviour
     void AdjustWorldState()
     {
         // TODO: Adjust world sprites
-
-//        Debug.Log(interpolation);
     }
 
     IEnumerator ShowStateText(string message)

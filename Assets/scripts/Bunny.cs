@@ -109,6 +109,14 @@ public class Bunny : MonoBehaviour {
         health += amount;
     }
 
+    public void ResurrectBunny()
+    {
+        speed = 5;
+        jumpforce = 15;
+
+        health = FullHealth;
+    }
+
     private void bunnyDie()
     {
         Debug.Log("DIE BUNNY, DIE!");
