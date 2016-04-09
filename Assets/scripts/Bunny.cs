@@ -83,7 +83,7 @@ public class Bunny : MonoBehaviour {
     {
         bool onGround = true;
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<CircleCollider2D>().radius+0.01f)), Vector2.down, 0.01f);
-        if (hit.transform != null && hit.rigidbody.gameObject.tag != "Player")
+        if (hit.transform != null && hit.collider.gameObject.tag != "Player")
         {
             onGround = true;
         }
