@@ -25,7 +25,7 @@ public class GameCamera : MonoBehaviour {
     private Vector3 velocity = Vector3.zero;
     private Transform target;
 
-    void Start () 
+    public void Start () 
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -46,5 +46,10 @@ public class GameCamera : MonoBehaviour {
     {
         iTween.ShakeRotation(gameObject.transform.parent.gameObject,new Vector3(4.0f,1.0f,4.0f)*0.1f,1.2f);
         iTween.ShakePosition(gameObject.transform.parent.gameObject,new Vector3(1.0f,3.0f,1.0f)*0.1f,1.2f);
+    }
+    public void SmallShake () 
+    {
+        iTween.ShakeRotation(gameObject.transform.parent.gameObject,new Vector3(4.0f,1.0f,4.0f)*0.04f,1.0f);
+        iTween.ShakePosition(gameObject.transform.parent.gameObject,new Vector3(1.0f,3.0f,1.0f)*0.04f,1.0f);
     }
 }

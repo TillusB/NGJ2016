@@ -10,6 +10,7 @@ public class KillerArea : MonoBehaviour {
 	public ExpellDirection expellType = ExpellDirection.NONE;
 
 	public Vector3 expellPoint;
+	public float duration = 0;
 	
 
 	public enum ExpellDirection
@@ -17,11 +18,20 @@ public class KillerArea : MonoBehaviour {
 		NONE,
 		OMNI,
 		DIRECTION,
+		TRAP_PLAYER,
 		//PLANE,
 	}
 
 	public void OnEnable()
 	{ 
+		Invoke("Init", 0.1f);
+	}
+
+	/// <summary>
+	/// Called by invoke.
+	/// </summary>
+	public void Init()
+	{
 		KillerAreaManager.GetInstance().AddKillerArea(this);
 	}
 
@@ -32,7 +42,14 @@ public class KillerArea : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().gameObject.transform))
+		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
+		{
+			KillerAreaManager.GetInstance().DamagePlayer(exitDamage);
+		}
+	}
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
 			KillerAreaManager.GetInstance().DamagePlayer(exitDamage);
 		}
@@ -40,7 +57,7 @@ public class KillerArea : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().gameObject.transform))
+		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
 			KillerAreaManager.GetInstance().DamagePlayer(enterDamage);
 		}
@@ -49,16 +66,24 @@ public class KillerArea : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().gameObject.transform))
+		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
 			KillerAreaManager.GetInstance().DamagePlayer(enterDamage);
 		}
 		ExpellPlayer(other.transform);
 	}
 
+	void OnTriggerStay2D(Collider2D other)
+	{
+		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
+		{
+			KillerAreaManager.GetInstance().DamagePlayer(stayDamage * Time.deltaTime);
+		}
+		ExpellPlayer(other.transform);
+	}
 	void OnTriggerStay(Collider other)
 	{
-		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().gameObject.transform))
+		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
 			KillerAreaManager.GetInstance().DamagePlayer(stayDamage * Time.deltaTime);
 		}
@@ -69,11 +94,30 @@ public class KillerArea : MonoBehaviour {
 	{
 		if(expellType == ExpellDirection.DIRECTION)
 		{
-			//KillerAreaManager.GetInstance().bunny.ApplyForce(expellPoint);
+			KillerAreaManager.GetInstance().bunny.ApplyForce(expellPoint);
 		}
 		else if(expellType == ExpellDirection.OMNI)
 		{
-			//KillerAreaManager.GetInstance().bunny.ApplyForce((expellPoint - playerPoint.position).Normalized);
+			KillerAreaManager.GetInstance().bunny.ApplyForce((expellPoint - playerPoint.position).normalized);
+		}
+		else if(expellType == ExpellDirection.TRAP_PLAYER)
+		{
+			Rigidbody2D body = KillerAreaManager.GetInstance().bunny.GetComponent<Rigidbody2D>();
+			body.constraints |= RigidbodyConstraints2D.FreezePosition;
+			Invoke("ReleaseBunny", duration);
 		}
 	}
+
+	public void ReleaseBunny()
+	{
+		Rigidbody2D body = KillerAreaManager.GetInstance().bunny.GetComponent<Rigidbody2D>();
+		body.constraints = RigidbodyConstraints2D.FreezeRotation;
+	}
+
+	#if UNITY_EDITOR
+	public void OnDrawGizmos()
+	{
+		Gizmos.DrawSphere(expellPoint + transform.position, 0.3f);
+	}
+	#endif
 }

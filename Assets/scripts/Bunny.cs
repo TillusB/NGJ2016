@@ -4,7 +4,7 @@ using System.Collections;
 public class Bunny : MonoBehaviour {
     public const int FullHealth = 100;
 
-    public int speed = 1;
+    public float speed = 5;
     public float jumpforce = 15;
 
     float horizontalInput = 0;
@@ -12,29 +12,30 @@ public class Bunny : MonoBehaviour {
     Vector2 VelocityLastFrame = Vector2.zero;
 
     float jumpInput = 0;
-    private int health;
+    private float health;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+
         health = FullHealth;
-        GameCamera.instance.Shake();
+        GameCamera.instance.Start();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         if(health <= 0)
         {
             bunnyDie();
         }
-#if UNITY_EDITOR //DEBUG
-        if (Input.GetKeyDown("a"))
-        {
-            reduceHealth(10);
-            Debug.Log(health);
-        }
-#endif
+        #if UNITY_EDITOR //DEBUG
+                if (Input.GetKeyDown("a"))
+                {
+                    reduceHealth(10);
+                    Debug.Log(health);
+                }
+        #endif
     }
 
     void FixedUpdate()
@@ -46,18 +47,15 @@ public class Bunny : MonoBehaviour {
             jump();
         }
 
-//        Debug.Log(horizontalInput);
-
-
         bool OnGroundTest = isOnGround();
 
         if(OnGroundTest != OnGround && VelocityLastFrame.y <0)
         {
-            GameCamera.instance.Shake();
+            GameCamera.instance.SmallShake();
         }
         OnGround = OnGroundTest;
         VelocityLastFrame = rb.velocity;
-	
+
 
         Vector2 movement = new Vector2(horizontalInput * speed, rb.velocity.y);
 
@@ -68,7 +66,7 @@ public class Bunny : MonoBehaviour {
     }
 
 
-    public void setSpeed(int newSpeed)
+    public void setSpeed(float newSpeed)
     {
         speed = newSpeed;
     }
@@ -80,12 +78,12 @@ public class Bunny : MonoBehaviour {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpforce, 0));
         }
     }
-    
+
     private bool isOnGround()
     {
         bool onGround = true;
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<CircleCollider2D>().radius+0.01f)), Vector2.down, 0.01f);
-        if (hit.transform != null && hit.rigidbody.gameObject.tag != "Player")
+        if (hit.transform != null && hit.collider.gameObject.tag != "Player")
         {
             onGround = true;
         }
@@ -101,12 +99,12 @@ public class Bunny : MonoBehaviour {
         rb.AddForce(forceVector);
     }
 
-    public void reduceHealth(int amount)
+    public void reduceHealth(float amount)
     {
         health -= amount;
     }
 
-    public void increaseHealth(int amount)
+    public void increaseHealth(float amount)
     {
         health += amount;
     }
@@ -121,7 +119,7 @@ public class Bunny : MonoBehaviour {
         //end game
     }
 
-    public int getHealth()
+    public float getHealth()
     {
         return health;
     }
