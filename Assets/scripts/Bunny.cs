@@ -39,7 +39,8 @@ public class Bunny : MonoBehaviour {
                     reduceHealth(10);
                     Debug.Log(health);
                 }
-        #endif
+#endif
+        rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
     void FixedUpdate()

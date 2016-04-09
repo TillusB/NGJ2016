@@ -30,8 +30,10 @@ public class BloodSpurter : MonoBehaviour {
 
 				nextSpurtTime = Time.time + spurtInterval;
 
-				ParticleSystem.Burst burst = new ParticleSystem.Burst(Time.time + Time.maximumDeltaTime, 10);
-				spurtSystem.emission.SetBursts(new ParticleSystem.Burst[]{burst});
+//				ParticleSystem.Burst burst = new ParticleSystem.Burst(Time.time, 10);
+//				spurtSystem.emission.SetBursts(new ParticleSystem.Burst[]{burst});
+
+				spurtSystem.Play();
 //				spurtSystem.emission.SetBursts()
 			}
 		}
