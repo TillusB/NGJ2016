@@ -30,6 +30,7 @@ public class GameHandler : MonoBehaviour
 
     bool gameOver = false;
     bool gameStarted = false;
+    bool gameFinished = false;
 
     float time;
 
@@ -125,7 +126,7 @@ public class GameHandler : MonoBehaviour
 
     IEnumerator ShowStateText(string message)
     {
-        var animationTime = 1f; // How long is the animation in seconds
+        var animationTime = 2f; // How long is the animation in seconds
         var currentTime = animationTime;
 
         stateText.enabled = true;
