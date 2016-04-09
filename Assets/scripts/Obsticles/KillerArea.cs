@@ -10,6 +10,7 @@ public class KillerArea : MonoBehaviour {
 	public ExpellDirection expellType = ExpellDirection.NONE;
 
 	public Vector3 expellPoint;
+	public float duration = 0;
 	
 
 	public enum ExpellDirection
@@ -17,6 +18,7 @@ public class KillerArea : MonoBehaviour {
 		NONE,
 		OMNI,
 		DIRECTION,
+		TRAP_PLAYER,
 		//PLANE,
 	}
 
@@ -98,7 +100,20 @@ public class KillerArea : MonoBehaviour {
 		{
 			KillerAreaManager.GetInstance().bunny.ApplyForce((expellPoint - playerPoint.position).normalized);
 		}
+		else if(expellType == ExpellDirection.TRAP_PLAYER)
+		{
+			Rigidbody2D body = KillerAreaManager.GetInstance().bunny.GetComponent<Rigidbody2D>();
+			body.constraints |= RigidbodyConstraints2D.FreezePosition;
+			Invoke("ReleaseBunny", duration);
+		}
 	}
+
+	public void ReleaseBunny()
+	{
+		Rigidbody2D body = KillerAreaManager.GetInstance().bunny.GetComponent<Rigidbody2D>();
+		body.constraints = RigidbodyConstraints2D.FreezeRotation;
+	}
+
 	#if UNITY_EDITOR
 	public void OnDrawGizmos()
 	{
