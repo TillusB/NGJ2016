@@ -1,0 +1,98 @@
+fileFormatVersion: 2
+guid: aa86fa4cea4e74353876e4fab6750543
+timeCreated: 1460203264
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bunny_idle_0
+    21300002: bunny_idle_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: bunny_idle_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 3
+        width: 81
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21.5, y: 34}
+        - {x: 20.5, y: 30}
+        - {x: -22.5, y: 13}
+        - {x: -40.5, y: -5}
+        - {x: -40.5, y: -27}
+        - {x: -35.5, y: -34}
+        - {x: 23.5, y: -34}
+        - {x: 40.5, y: -8}
+        - {x: 40.5, y: 9}
+        - {x: 30.5, y: 34}
+    - name: bunny_idle_1
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 3
+        width: 81
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27.5, y: 36.5}
+        - {x: 3.5, y: 36.5}
+        - {x: -40.5, y: -7.5}
+        - {x: -40.5, y: -36.5}
+        - {x: 25.5, y: -36.5}
+        - {x: 40.5, y: -5.5}
+        - {x: 40.5, y: 18.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
