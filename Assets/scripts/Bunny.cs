@@ -5,7 +5,7 @@ public class Bunny : MonoBehaviour {
     public int speed = 1;
     public float jumpforce = 15;
     float horizontalInput = 0;
-    float verticalInput = 0;
+    float jumpInput = 0;
     Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
@@ -20,16 +20,14 @@ public class Bunny : MonoBehaviour {
     void FixedUpdate()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        if(isOnGround())
-            verticalInput = Input.GetAxis("Jump");
-        if ( verticalInput != 0)
+        jumpInput = Input.GetAxis("Jump");
+        if ( jumpInput != 0)
         {
-            //jump();
+            jump();
         }
-        Vector3 movement = new Vector3(horizontalInput * speed, 0.0f, verticalInput * jumpforce);
+        Vector2 movement = new Vector2(horizontalInput * speed, rb.velocity.y);
 
-        Debug.Log(horizontalInput);
-        if (horizontalInput != 0 || verticalInput != 0)
+        if (horizontalInput != 0)
         {
             rb.velocity = movement;
         }
@@ -52,13 +50,15 @@ public class Bunny : MonoBehaviour {
     private bool isOnGround()
     {
         bool onGround = true;
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<CircleCollider2D>().radius+0.1f)), Vector2.down, 0.01f);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<CircleCollider2D>().radius+0.01f)), Vector2.down, 0.01f);
         if (hit.transform != null && hit.rigidbody.gameObject.tag != "Player")
         {
+            Debug.Log("on ground");
             onGround = true;
         }
         else
         {
+            Debug.Log("not on ground");
             onGround = false;
         }
         return onGround;
