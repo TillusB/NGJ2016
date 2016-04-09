@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Bunny : MonoBehaviour {
-    public int speed = 5;
+    public float speed = 5;
     public float jumpforce = 15;
 
     float horizontalInput = 0;
@@ -66,7 +66,7 @@ public class Bunny : MonoBehaviour {
     }
 
 
-    public void setSpeed(int newSpeed)
+    public void setSpeed(float newSpeed)
     {
         speed = newSpeed;
     }
