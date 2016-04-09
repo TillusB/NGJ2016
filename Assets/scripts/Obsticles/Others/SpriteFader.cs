@@ -4,7 +4,7 @@ using System.Collections;
 public class SpriteFader : MonoBehaviour {
 
 	public SpriteRenderer renderer;
-	public const float maxDuration = 0.3f;
+	public const float maxDuration = 0.6f;
 	float duration = 0;
 	public bool isFading = false;
 
@@ -20,6 +20,7 @@ public class SpriteFader : MonoBehaviour {
 	void Update () {
 		if(isFading)
 		{
+			duration += Time.deltaTime;
 			if(duration < maxDuration)
 			{
 				renderer.material.color = new Color(1, 1, 1, 1 - duration / maxDuration);
@@ -38,6 +39,7 @@ public class SpriteFader : MonoBehaviour {
 		gameObject.SetActive(true);
 		enabled = true;
 		isFading = true;
+		duration = 0;
 		renderer.sprite = sprite;
 		renderer.material.color = new Color(1, 1, 1, 1);
 	}

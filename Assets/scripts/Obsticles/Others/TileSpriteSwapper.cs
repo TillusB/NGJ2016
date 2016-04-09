@@ -9,12 +9,15 @@ public class TileSpriteSwapper : MonoBehaviour {
 	public SpriteRenderer renderer;
 	public SpriteFader fader;
 
-	public int currentState = 5;
+	[System.NonSerialized]
+	public int currentState = 4;
 
 	// Use this for initialization
 	void Start () {
+		transform.position += new Vector3(0,0,0.01f);
 		if(!isSwapping)
 			enabled = false;
+		TileSpriteManager.GetInstance().AddSwapper(this);
 	}
 	
 	// Update is called once per frame

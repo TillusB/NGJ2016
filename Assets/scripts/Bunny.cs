@@ -76,16 +76,16 @@ public class Bunny : MonoBehaviour {
         if (isOnGround())
         {
             bool isAllowedToJump = BunnyAnimController.IsAllowedToJump();
-            if(isAllowedToJump)
-            {
+//            if(isAllowedToJump)
+//            {
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpforce, 0));
                 BunnyAnimController.DoJump();
                 _doJumpUntilAllowed = false;
-            }
-            else
-            {
-                _doJumpUntilAllowed = true;
-            }
+//            }
+//            else
+//            {
+//                _doJumpUntilAllowed = true;
+//            }
         }
     }
 
