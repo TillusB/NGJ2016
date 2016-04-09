@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BunnyAnimationController : MonoBehaviour {
 
+
     Bunny BunnyScript;
-    Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
 	// Use this for initialization
@@ -17,6 +17,30 @@ public class BunnyAnimationController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () 
+    {
+   
+        if(Input.GetKeyUp(KeyCode.K))
+        {
+            anim.Play("bunny_die");
+        }
+        if( IsPlaying("bunny_die"))
+            return;
+
+        if(BunnyScript.isOnGround() )
+            DoGroundAnimations();
+        else
+        {
+       
+           
+                if(BunnyScript.rb.velocity.y<0)
+                {
+                    anim.Play("bunny_jumpFall");
+                }
+         
+        }
+
+	}
+    void DoGroundAnimations()
     {
         if( BunnyScript.rb.velocity.x > 0 )
         {
@@ -34,7 +58,25 @@ public class BunnyAnimationController : MonoBehaviour {
             anim.Play("bunny_idle");
         }
 
-        float animSpeed = Mathf.Abs( BunnyScript.rb.velocity.x/3f );
-        anim.speed = animSpeed;
-	}
+
+
+        if( anim.GetCurrentAnimatorStateInfo(0).IsName("bunny_run"))
+        {
+            float animSpeed = Mathf.Abs( BunnyScript.rb.velocity.x/3f );
+            anim.speed = animSpeed;
+        }
+        else
+        {
+            anim.speed = 1;
+        } 
+    }
+    public bool IsPlaying(string aName)
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsName(aName);
+    }
+
+    public void DoJump()
+    {
+        anim.Play("bunny_jump"); 
+    }
 }

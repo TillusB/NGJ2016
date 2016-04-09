@@ -1,9 +1,18 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: f781de9e3d7d44dc686684dfdd34bcf0
 timeCreated: 1460207577
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
+=======
+guid: 2cdaa244f82674349a4cdb5260c0c192
+timeCreated: 1460212115
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bunny_fall_0
+>>>>>>> Stashed changes
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +39,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
+<<<<<<< Updated upstream
     aniso: -1
+=======
+    aniso: 16
+>>>>>>> Stashed changes
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +51,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
+<<<<<<< Updated upstream
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> Stashed changes
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +66,30 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
+<<<<<<< Updated upstream
     sprites: []
+=======
+    sprites:
+    - name: bunny_fall_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 3
+        width: 114
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 31.5}
+        - {x: -57, y: 19.5}
+        - {x: -57, y: -16.5}
+        - {x: -16, y: -31.5}
+        - {x: 51, y: -31.5}
+        - {x: 57, y: -13.5}
+        - {x: 57, y: 14.5}
+        - {x: 43, y: 31.5}
+>>>>>>> Stashed changes
     outline: []
   spritePackingTag: 
   userData: 

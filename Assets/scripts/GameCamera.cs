@@ -49,7 +49,7 @@ public class GameCamera : MonoBehaviour {
     }
     public void SmallShake () 
     {
-        iTween.ShakeRotation(gameObject.transform.parent.gameObject,new Vector3(4.0f,1.0f,4.0f)*0.04f,1.0f);
-        iTween.ShakePosition(gameObject.transform.parent.gameObject,new Vector3(1.0f,3.0f,1.0f)*0.04f,1.0f);
+        iTween.ShakeRotation(gameObject.transform.parent.gameObject,new Vector3(4.0f,1.0f,4.0f)*0.02f,0.5f);
+        iTween.ShakePosition(gameObject.transform.parent.gameObject,new Vector3(1.0f,3.0f,1.0f)*0.02f,0.5f);
     }
 }
