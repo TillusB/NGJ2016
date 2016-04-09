@@ -6,13 +6,9 @@ public class Bunny : MonoBehaviour {
     public float jumpforce = 15;
 
     float horizontalInput = 0;
-<<<<<<< HEAD
     bool OnGround = true;
-	// Use this for initialization
-	void Start () 
-    {
+    Vector2 VelocityLastFrame = Vector2.zero;
 
-=======
     float jumpInput = 0;
     private int health;
 
@@ -21,7 +17,7 @@ public class Bunny : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         health = 100;
->>>>>>> origin/master
+        GameCamera.instance.Shake();
 	}
 	
 	// Update is called once per frame
@@ -47,19 +43,20 @@ public class Bunny : MonoBehaviour {
         {
             jump();
         }
-<<<<<<< HEAD
+
         Debug.Log(horizontalInput);
 
 
         bool OnGroundTest = isOnGround();
-        if(OnGroundTest != OnGround && gameObject.GetComponent<Rigidbody2D>().velocity.y <0)
+
+        if(OnGroundTest != OnGround && VelocityLastFrame.y <0)
         {
             GameCamera.instance.Shake();
         }
         OnGround = OnGroundTest;
+        VelocityLastFrame = rb.velocity;
+	
 
-	}
-=======
         Vector2 movement = new Vector2(horizontalInput * speed, rb.velocity.y);
 
         if (horizontalInput != 0)
@@ -67,7 +64,7 @@ public class Bunny : MonoBehaviour {
             rb.velocity = movement;
         }
     }
->>>>>>> origin/master
+
 
     public void setSpeed(int newSpeed)
     {
