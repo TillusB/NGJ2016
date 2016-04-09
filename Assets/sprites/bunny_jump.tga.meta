@@ -1,11 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: 73c688195795b480294174f9af58be5a
-timeCreated: 1460207577
-licenseType: Free
-TextureImporter:
-  fileIDToRecycleName: {}
-=======
 guid: 49753f47695af48149f5fb3674ba92ad
 timeCreated: 1460211963
 licenseType: Free
@@ -14,7 +7,6 @@ TextureImporter:
     21300000: bunny_jump_0
     21300002: bunny_jump_1
     21300004: bunny_jump_2
->>>>>>> Stashed changes
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

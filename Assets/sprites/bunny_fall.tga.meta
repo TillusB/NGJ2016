@@ -1,18 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: f781de9e3d7d44dc686684dfdd34bcf0
-timeCreated: 1460207577
-licenseType: Free
-TextureImporter:
-  fileIDToRecycleName: {}
-=======
 guid: 2cdaa244f82674349a4cdb5260c0c192
 timeCreated: 1460212115
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: bunny_fall_0
->>>>>>> Stashed changes
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
