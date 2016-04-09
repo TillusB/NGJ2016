@@ -118,4 +118,9 @@ public class Bunny : MonoBehaviour {
         //play death animation
         //end game
     }
+
+    public int getHealth()
+    {
+        return health;
+    }
 }
