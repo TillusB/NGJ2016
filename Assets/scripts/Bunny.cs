@@ -81,8 +81,12 @@ public class Bunny : MonoBehaviour {
 
     private bool isOnGround()
     {
+		int layerMask = 1 << LayerMask.NameToLayer("Default");
+
+//		Debug.Log("LayerMask.NameToLayer(\"Default\"): " + LayerMask.NameToLayer("Default")+ ", layerMask: " +layerMask);
+
         bool onGround = true;
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<CircleCollider2D>().radius+0.01f)), Vector2.down, 0.01f);
+		RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<CircleCollider2D>().radius+0.01f)), Vector2.down, 0.01f, layerMask);
         if (hit.transform != null && hit.collider.gameObject.tag != "Player")
         {
             onGround = true;
