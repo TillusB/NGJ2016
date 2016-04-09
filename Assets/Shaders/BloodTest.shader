@@ -8,7 +8,7 @@
 	SubShader
 	{
 		Tags {"Queue" = "Transparent" }
-//		LOD 100
+		LOD 100
 
 
 
@@ -40,7 +40,8 @@
 				half4 finalColor= texcol;		
 
 
-				finalColor.a = floor((finalColor.a/0.1)*0.5) * 0.25;
+//				finalColor.a = floor((finalColor.a/0.1)*0.5) * 0.25; //4 colors
+				finalColor.a = floor((finalColor.a/0.1)*0.25) * 0.5; //2 colors 
 
 
 				return finalColor;
