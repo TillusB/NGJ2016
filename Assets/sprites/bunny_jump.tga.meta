@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 49753f47695af48149f5fb3674ba92ad
-timeCreated: 1460211963
+timeCreated: 1460223527
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -58,24 +58,25 @@ TextureImporter:
         serializedVersion: 2
         x: 24
         y: 3
-        width: 84
-        height: 59
+        width: 78
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -17, y: 29.5}
-        - {x: -42, y: 23.5}
-        - {x: -42, y: -13.5}
-        - {x: -31, y: -29.5}
-        - {x: 33, y: -29.5}
-        - {x: 42, y: -22.5}
-        - {x: 42, y: 29.5}
+      - - {x: -17, y: 41}
+        - {x: -39, y: 23}
+        - {x: -39, y: -24}
+        - {x: -27, y: -41}
+        - {x: 1, y: -41}
+        - {x: 39, y: -4}
+        - {x: 39, y: 38}
+        - {x: 36, y: 41}
     - name: bunny_jump_1
       rect:
         serializedVersion: 2
         x: 152
-        y: 4
+        y: 3
         width: 88
         height: 58
       alignment: 0
@@ -94,7 +95,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 265
-        y: 11
+        y: 16
         width: 103
         height: 52
       alignment: 0
