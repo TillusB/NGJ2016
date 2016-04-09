@@ -10,7 +10,7 @@ public class Bunny : MonoBehaviour {
     Vector2 VelocityLastFrame = Vector2.zero;
 
     float jumpInput = 0;
-    private int health;
+    private float health;
 
     Rigidbody2D rb;
 	// Use this for initialization
@@ -119,7 +119,7 @@ public class Bunny : MonoBehaviour {
         //end game
     }
 
-    public int getHealth()
+    public float getHealth()
     {
         return health;
     }
