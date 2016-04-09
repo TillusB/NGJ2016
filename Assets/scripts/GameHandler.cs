@@ -6,13 +6,19 @@ public class GameHandler : MonoBehaviour
 {
     // TODO: Some routine still runs after Bunny Death?
 
-//    const float TimeForEveryState = 5;
+    //    const float TimeForEveryState = 5;
+    static GameHandler ourInstance;
 
     public Bunny bunny;
 
+    public static GameHandler GetInstance()
+    {
+        return ourInstance;
+    }
     // Controls
     public Button startGameButton;
     public Button restartGameButton;
+    public float bleedSpeed = 0.1f;
 
     // 5 = very good
     // 0 = dead
@@ -37,6 +43,7 @@ public class GameHandler : MonoBehaviour
 
     public void StartGame()
     {
+        ourInstance = this;
         Debug.Log("Start Game!");
         gameStarted = true;
         startGameButton.gameObject.SetActive(false);
@@ -92,6 +99,19 @@ public class GameHandler : MonoBehaviour
 
             AdjustBunnyState();
             AdjustWorldState();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        Bleed(bleedSpeed);
+    }
+
+    private void Bleed(float speed)
+    {
+        if(bunny.getHealth() > 0)
+        {
+            bunny.reduceHealth(speed);
         }
     }
 
