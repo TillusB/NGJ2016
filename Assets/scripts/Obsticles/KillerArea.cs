@@ -69,11 +69,11 @@ public class KillerArea : MonoBehaviour {
 	{
 		if(expellType == ExpellDirection.DIRECTION)
 		{
-			//Player.ApplyForce(expellPoint);
+			//KillerAreaManager.GetInstance().bunny.ApplyForce(expellPoint);
 		}
 		else if(expellType == ExpellDirection.OMNI)
 		{
-			//Player.ApplyForce((expellPoint - playerPoint.position).Normalized);
+			//KillerAreaManager.GetInstance().bunny.ApplyForce((expellPoint - playerPoint.position).Normalized);
 		}
 	}
 }

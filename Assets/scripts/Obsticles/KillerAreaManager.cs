@@ -7,6 +7,7 @@ public class KillerAreaManager : MonoBehaviour {
 	static KillerAreaManager ourInstance;
 
 	public GameObject player;
+	public Bunny bunny;
 
 	static public KillerAreaManager GetInstance()
 	{
@@ -20,14 +21,16 @@ public class KillerAreaManager : MonoBehaviour {
 		if(ourInstance != null)
 		{
 			Destroy(gameObject);
+			return;
 		}
 		else
 			ourInstance = this;
+		player = GameObject.Find("Bunny");
 	}
 
 	public void DamagePlayer(float damage)
 	{
-		
+		//bunny.Damage(damage);
 	}
 
 	public void AddKillerArea(KillerArea area)
