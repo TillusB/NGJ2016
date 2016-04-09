@@ -40,7 +40,6 @@ public class Bunny : MonoBehaviour {
 
     private void jump()
     {
-        Debug.Log("Jump!");
         if (isOnGround())
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpforce, 0));
@@ -53,12 +52,10 @@ public class Bunny : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (GetComponent<CircleCollider2D>().radius+0.01f)), Vector2.down, 0.01f);
         if (hit.transform != null && hit.rigidbody.gameObject.tag != "Player")
         {
-            Debug.Log("on ground");
             onGround = true;
         }
         else
         {
-            Debug.Log("not on ground");
             onGround = false;
         }
         return onGround;
