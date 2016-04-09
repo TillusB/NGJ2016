@@ -101,6 +101,9 @@ public class GameHandler : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!gameStarted)
+            return;
+
         Bleed(bleedSpeed);
     }
 
@@ -148,6 +151,11 @@ public class GameHandler : MonoBehaviour
 
         // Animation is over
         stateText.enabled = false;
+    }
+
+    public bool GameIsStarted()
+    {
+        return gameStarted;
     }
 
     // QUESTIONS

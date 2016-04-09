@@ -16,6 +16,7 @@ public class Bunny : MonoBehaviour {
 
     public Rigidbody2D rb;
     public BunnyAnimationController BunnyAnimController;
+    public GameHandler gameHandler;
 
     private bool _doJumpUntilAllowed = false;
 	// Use this for initialization
@@ -29,6 +30,9 @@ public class Bunny : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (!gameHandler.GameIsStarted())
+            return;
+
         if(health <= 0)
         {
             bunnyDie();
@@ -39,6 +43,9 @@ public class Bunny : MonoBehaviour {
     public Vector2 currentMovment;
     void FixedUpdate()
     {
+        if (!gameHandler.GameIsStarted())
+            return;
+
         horizontalInput = Input.GetAxis("Horizontal");
         jumpInput = Input.GetAxis("Jump");
         if ( jumpInput != 0 || _doJumpUntilAllowed)
