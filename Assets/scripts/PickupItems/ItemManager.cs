@@ -61,10 +61,19 @@ public class ItemManager : MonoBehaviour {
         }
         if(item.itemEffect == Effect.REDUCEBLEED)
         {
-            // TODO: reducebleed in the gamemmanager for a certain amount of time?
+            StartCoroutine(ReduceBleedSpeed(item.amount));
         }
         Debug.Log("Health: " + bunny.getHealth() + ", Speed: " + bunny.speed);
         item.gameObject.SetActive(false);
+    }
+    private IEnumerator ReduceBleedSpeed(float duration)
+    {
+        GameHandler handler = GameHandler.GetInstance();
+        float origBleedSpeed = handler.bleedSpeed;
+        handler.bleedSpeed = handler.bleedSpeed / 2;
+        yield return new WaitForSeconds(duration);
+        handler.bleedSpeed = origBleedSpeed;
+        yield return null;
     }
 
     private IEnumerator SpeedPickup(float time)

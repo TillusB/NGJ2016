@@ -5,11 +5,19 @@ using UnityEngine.UI;
 public class GameHandler : MonoBehaviour
 {
     // TODO: Some routine still runs after Bunny Death?
+    //    const float TimeForEveryState = 5;
+    static GameHandler ourInstance;
+
     public Bunny bunny;
 
+    public static GameHandler GetInstance()
+    {
+        return ourInstance;
+    }
     // Controls
     public Button startGameButton;
     public Button restartGameButton;
+    public float bleedSpeed = 0.1f;
 
     // BunnyStates according to it's health:
     // 100...81 -> 5 very good
@@ -31,6 +39,7 @@ public class GameHandler : MonoBehaviour
 
     public void StartGame()
     {
+        ourInstance = this;
         Debug.Log("Start Game!");
         gameStarted = true;
         startGameButton.gameObject.SetActive(false);
@@ -63,7 +72,7 @@ public class GameHandler : MonoBehaviour
 
         stateText.enabled = false;
     }
-	
+
     // Update is called once per frame
     void Update()
     {
@@ -86,6 +95,19 @@ public class GameHandler : MonoBehaviour
 
             AdjustBunnyState();
             AdjustWorldState();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        Bleed(bleedSpeed);
+    }
+
+    private void Bleed(float speed)
+    {
+        if(bunny.getHealth() > 0)
+        {
+            bunny.reduceHealth(speed);
         }
     }
 

@@ -102,11 +102,15 @@ public class Bunny : MonoBehaviour {
     public void reduceHealth(float amount)
     {
         health -= amount;
+        if (health < 0)
+            health = 0;
     }
 
     public void increaseHealth(float amount)
     {
         health += amount;
+        if (health > 100)
+            health = 100;
     }
 
     public void ResurrectBunny()
