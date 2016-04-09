@@ -51,6 +51,8 @@ public class GameHandler : MonoBehaviour
 
     public void RestartGame()
     {
+        Application.LoadLevel(Application.loadedLevel);
+
         restartGameButton.gameObject.SetActive(false);
         gameOver = false;
 
