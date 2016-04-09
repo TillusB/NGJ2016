@@ -33,13 +33,7 @@ public class Bunny : MonoBehaviour {
         {
             bunnyDie();
         }
-        #if UNITY_EDITOR //DEBUG
-                if (Input.GetKeyDown("a"))
-                {
-                    reduceHealth(10);
-                    Debug.Log(health);
-                }
-#endif
+        
         rb.velocity = new Vector2(0, rb.velocity.y);
     }
     public Vector2 currentMovment;
@@ -82,16 +76,16 @@ public class Bunny : MonoBehaviour {
         if (isOnGround())
         {
             bool isAllowedToJump = BunnyAnimController.IsAllowedToJump();
-            if(isAllowedToJump)
-            {
+//            if(isAllowedToJump)
+//            {
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpforce, 0));
                 BunnyAnimController.DoJump();
                 _doJumpUntilAllowed = false;
-            }
-            else
-            {
-                _doJumpUntilAllowed = true;
-            }
+//            }
+//            else
+//            {
+//                _doJumpUntilAllowed = true;
+//            }
         }
     }
 
