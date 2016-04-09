@@ -61,6 +61,13 @@ public class GameHandler : MonoBehaviour
         StartGame();
     }
 
+    public void GameFinished()
+    {
+        gameFinished = true;
+//        ShowStateText(string.Format("Congratulations! You've finished the game in {0} seconds.", time), 10);
+        ShowStateText(time.ToString(), 10);
+    }
+
     public void SetGameOver()
     {
         gameOver = true;
@@ -74,6 +81,7 @@ public class GameHandler : MonoBehaviour
         // Health: 100...0
 
         stateText.enabled = false;
+        time = 0;
     }
 
     // Update is called once per frame
@@ -86,6 +94,8 @@ public class GameHandler : MonoBehaviour
         {
             SetGameOver();
         }
+
+        time += Time.deltaTime;
 
         var currentHealth = (float)bunny.getHealth();
         var currentBunnyState = Mathf.CeilToInt( currentHealth / Bunny.FullHealth * 5f);
@@ -129,9 +139,9 @@ public class GameHandler : MonoBehaviour
         // TODO: Adjust world sprites
     }
 
-    IEnumerator ShowStateText(string message)
+    IEnumerator ShowStateText(string message, float animationTime = 2)
     {
-        var animationTime = 2f; // How long is the animation in seconds
+//        var animationTime = 2f; // How long is the animation in seconds
         var currentTime = animationTime;
 
         stateText.enabled = true;

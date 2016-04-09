@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameFinishController : MonoBehaviour {
 
+    public GameHandler gameHandler;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -16,6 +18,8 @@ public class GameFinishController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collision enter!");
-        Debug.Break();
+//        Debug.Break();
+
+        gameHandler.GameFinished();
     }
 }
