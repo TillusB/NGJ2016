@@ -34,7 +34,9 @@ public class BunnyAnimationController : MonoBehaviour {
     // Update is called once per frame
     void Update () 
     {
-
+        if(BunnyScript.getHealth() <= 0)
+            return;
+        
         if(Input.GetKeyUp(KeyCode.K))
         {
             anim.Play("bunny_die");
@@ -65,6 +67,7 @@ public class BunnyAnimationController : MonoBehaviour {
     }
     void DoGroundAnimations()
     {
+        
         if( BunnyScript.currentMovment.x > 0 )
         {
             anim.Play("bunny_run");
