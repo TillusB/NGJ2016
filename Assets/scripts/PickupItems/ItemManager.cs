@@ -63,6 +63,8 @@ public class ItemManager : MonoBehaviour {
         {
             // TODO: reducebleed in the gamemmanager for a certain amount of time?
         }
+        Debug.Log("Health: " + bunny.getHealth() + ", Speed: " + bunny.speed);
+        item.gameObject.SetActive(false);
     }
 
 }

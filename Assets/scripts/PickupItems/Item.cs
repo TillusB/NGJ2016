@@ -16,17 +16,18 @@ public class Item : MonoBehaviour {
         ItemManager.GetInstance().RemoveItem(this);
     }
 
-    void OnTriggerEnter(Collider other)
+   /* void OnTriggerEnter(Collider other)
     {
-        if (other.transform.IsChildOf(KillerAreaManager.GetInstance().gameObject.transform))
+        if (other.transform.IsChildOf(ItemManager.GetInstance().gameObject.transform))
         {
             ItemManager.GetInstance().ApplyEffect(this);
         }
     }
-
+    */
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.IsChildOf(KillerAreaManager.GetInstance().gameObject.transform))
+        Debug.Log(other.gameObject.name);
+        if (other.transform == ItemManager.GetInstance().player.transform)
         {
             ItemManager.GetInstance().ApplyEffect(this);
         }
