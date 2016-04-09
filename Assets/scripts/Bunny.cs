@@ -16,6 +16,8 @@ public class Bunny : MonoBehaviour {
 
     public Rigidbody2D rb;
     public BunnyAnimationController BunnyAnimController;
+
+    private bool _doJumpUntilAllowed = false;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -44,7 +46,7 @@ public class Bunny : MonoBehaviour {
     {
         horizontalInput = Input.GetAxis("Horizontal");
         jumpInput = Input.GetAxis("Jump");
-        if ( jumpInput != 0)
+        if ( jumpInput != 0 || _doJumpUntilAllowed)
         {
             jump();
         }
@@ -53,7 +55,7 @@ public class Bunny : MonoBehaviour {
 
         if(OnGroundTest != OnGround && VelocityLastFrame.y <0)
         {
-            GameCamera.instance.SmallShake();
+//            GameCamera.instance.SmallShake();
         }
         OnGround = OnGroundTest;
         VelocityLastFrame = rb.velocity;
@@ -77,8 +79,17 @@ public class Bunny : MonoBehaviour {
     {
         if (isOnGround())
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpforce, 0));
-            BunnyAnimController.DoJump();
+            bool isAllowedToJump = BunnyAnimController.IsAllowedToJump();
+            if(isAllowedToJump)
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpforce, 0));
+                BunnyAnimController.DoJump();
+                _doJumpUntilAllowed = false;
+            }
+            else
+            {
+                _doJumpUntilAllowed = true;
+            }
         }
     }
 

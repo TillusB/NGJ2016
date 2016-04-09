@@ -20,6 +20,9 @@ public class BloodSpurtBall : MonoBehaviour {
 		deathTime = Time.time + lifetime;
 
 //		Debug.Log("dir * speed: " + (dir * speed));
+//		dir 
+		dir.x += Random.Range(-0.1f, 0.1f);
+		dir.y += Random.Range(-0.1f, 0.1f);
 		rb.AddForce(dir * speed, ForceMode2D.Impulse);
 	}
 
@@ -32,6 +35,8 @@ public class BloodSpurtBall : MonoBehaviour {
 
 		Collider2D groundColl = Physics2D.OverlapCircle(transform.position, 0.1f, groundLayerMask);
 		if (groundColl != null && groundColl.GetComponent<BloodableTile>() != null) groundColl.GetComponent<BloodableTile>().HitByBlood();
+	
+//		if (groundColl)
 	}
 
 }

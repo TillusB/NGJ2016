@@ -26,17 +26,24 @@ public class BunnyAnimationController : MonoBehaviour {
         if( IsPlaying("bunny_die"))
             return;
 
+        if( BunnyScript.rb.velocity.x > 0 )
+        {
+            sr.flipX = false;
+
+        }
+        else if( BunnyScript.rb.velocity.x < 0 )
+        {
+            sr.flipX = true;
+        }
+
         if(BunnyScript.isOnGround() )
             DoGroundAnimations();
         else
         {
-       
-           
-                if(BunnyScript.rb.velocity.y<0)
-                {
-                    anim.Play("bunny_jumpFall");
-                }
-         
+            if(BunnyScript.rb.velocity.y<0)
+            {
+                anim.Play("bunny_jumpFall");
+            }         
         }
 
 	}
@@ -44,13 +51,11 @@ public class BunnyAnimationController : MonoBehaviour {
     {
         if( BunnyScript.rb.velocity.x > 0 )
         {
-            sr.flipX = false;
             anim.Play("bunny_run");
 
         }
         else if( BunnyScript.rb.velocity.x < 0 )
         {
-            sr.flipX = true;
             anim.Play("bunny_run");
         }
         else
@@ -78,5 +83,18 @@ public class BunnyAnimationController : MonoBehaviour {
     public void DoJump()
     {
         anim.Play("bunny_jump"); 
+    }
+
+    public bool IsAllowedToJump()
+    {
+
+        Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime % 1);
+        if( anim.GetCurrentAnimatorStateInfo(0).normalizedTime % 1 < 1f)
+        if( anim.GetCurrentAnimatorStateInfo(0).normalizedTime % 1 > 0.7f)
+            return true;
+        if( anim.GetCurrentAnimatorStateInfo(0).normalizedTime % 1 < 0.2f)
+            return true;
+
+        return false;
     }
 }
