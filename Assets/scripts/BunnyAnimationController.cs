@@ -7,18 +7,34 @@ public class BunnyAnimationController : MonoBehaviour {
     Bunny BunnyScript;
     SpriteRenderer sr;
     Animator anim;
-	// Use this for initialization
-	void Start () 
+
+    private static BunnyAnimationController _instance;
+
+    public static BunnyAnimationController instance
+    {
+        get 
+        {
+            if(_instance == null)
+            {
+                _instance = GameObject.Find("Bunny").transform.GetChild(0).GetComponent<BunnyAnimationController>();
+            }
+            return _instance; 
+        }
+
+    }
+
+    // Use this for initialization
+    void Start () 
     {
         BunnyScript = transform.parent.GetComponent<Bunny>();
         sr =  GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void Update () 
+    }
+
+    // Update is called once per frame
+    void Update () 
     {
-   
+
         if(Input.GetKeyUp(KeyCode.K))
         {
             anim.Play("bunny_die");
@@ -46,15 +62,15 @@ public class BunnyAnimationController : MonoBehaviour {
             }         
         }
 
-	}
+    }
     void DoGroundAnimations()
     {
-        if( BunnyScript.rb.velocity.x > 0 )
+        if( BunnyScript.currentMovment.x > 0 )
         {
             anim.Play("bunny_run");
 
         }
-        else if( BunnyScript.rb.velocity.x < 0 )
+        else if( BunnyScript.currentMovment.x < 0 )
         {
             anim.Play("bunny_run");
         }
@@ -96,5 +112,9 @@ public class BunnyAnimationController : MonoBehaviour {
             return true;
 
         return false;
+    }
+    public void PlayKillExplode()
+    {
+        anim.Play("bunny_die");
     }
 }

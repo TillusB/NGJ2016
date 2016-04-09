@@ -42,7 +42,7 @@ public class Bunny : MonoBehaviour {
 #endif
         rb.velocity = new Vector2(0, rb.velocity.y);
     }
-
+    public Vector2 currentMovment;
     void FixedUpdate()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -68,6 +68,7 @@ public class Bunny : MonoBehaviour {
         {
             rb.velocity = movement;
         }
+        currentMovment = movement;
     }
 
 
