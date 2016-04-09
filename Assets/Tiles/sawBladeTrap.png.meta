@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 00195c91507385e49a749fcdf8ee7563
+guid: ae772e8497befba4abf32d7d7b8f8a09
 timeCreated: 1460223224
 licenseType: Free
 TextureImporter:
@@ -65,14 +65,12 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -33, y: 54}
-        - {x: -46, y: 38}
-        - {x: -53, y: 18}
-        - {x: -53, y: -2}
-        - {x: -51, y: -3}
-        - {x: 53, y: -3}
-        - {x: 53, y: 46}
-        - {x: 26, y: 54}
+      - - {x: -23, y: 55}
+        - {x: -54, y: 27}
+        - {x: -54, y: -3}
+        - {x: 55, y: -3}
+        - {x: 55, y: 39}
+        - {x: 31, y: 55}
     - name: sawBladeTrap_1
       rect:
         serializedVersion: 2
@@ -83,7 +81,19 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 9, y: 61}
+        - {x: 8, y: 59}
+        - {x: 10, y: 56}
+        - {x: 13, y: 53}
+        - {x: 10, y: 55}
+        - {x: -1, y: 61}
+        - {x: -15, y: 61}
+        - {x: -54, y: 32}
+        - {x: -54, y: -4}
+        - {x: 53, y: -4}
+        - {x: 53, y: 46}
+        - {x: 33, y: 61}
     - name: sawBladeTrap_2
       rect:
         serializedVersion: 2
@@ -94,7 +104,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -27, y: 54}
+        - {x: -54, y: 22}
+        - {x: -54, y: -4}
+        - {x: 54, y: -4}
+        - {x: 54, y: 19}
+        - {x: 36, y: 54}
     - name: sawBladeTrap_3
       rect:
         serializedVersion: 2
@@ -105,7 +121,14 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -39, y: 55}
+        - {x: -48, y: 39}
+        - {x: -54, y: 20}
+        - {x: -54, y: -3}
+        - {x: 53, y: -3}
+        - {x: 53, y: 46}
+        - {x: 24, y: 55}
     outline: []
   spritePackingTag: 
   userData: 
