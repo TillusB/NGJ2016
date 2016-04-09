@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class Bunny : MonoBehaviour {
+    public const int FullHealth = 100;
+
     public int speed = 1;
     public float jumpforce = 15;
 
@@ -16,7 +18,7 @@ public class Bunny : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
-        health = 100;
+        health = FullHealth;
         GameCamera.instance.Shake();
 	}
 	
@@ -44,7 +46,7 @@ public class Bunny : MonoBehaviour {
             jump();
         }
 
-        Debug.Log(horizontalInput);
+//        Debug.Log(horizontalInput);
 
 
         bool OnGroundTest = isOnGround();
