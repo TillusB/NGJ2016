@@ -7,22 +7,6 @@ public class BunnyAnimationController : MonoBehaviour {
     Bunny BunnyScript;
     SpriteRenderer sr;
     Animator anim;
-
-    private static BunnyAnimationController _instance;
-
-    public static BunnyAnimationController instance
-    {
-        get 
-        {
-            if(_instance == null)
-            {
-                _instance = GameObject.Find("Bunny").transform.GetChild(0).GetComponent<BunnyAnimationController>();
-            }
-            return _instance; 
-        }
-
-    }
-
 	// Use this for initialization
 	void Start () 
     {
@@ -112,9 +96,5 @@ public class BunnyAnimationController : MonoBehaviour {
             return true;
 
         return false;
-    }
-    public void PlayKillExplode()
-    {
-        anim.Play("bunny_die");
     }
 }
