@@ -45,14 +45,14 @@ public class KillerArea : MonoBehaviour {
 	{
 		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
-			KillerAreaManager.GetInstance().DamagePlayer(exitDamage);
+            KillerAreaManager.GetInstance().DamagePlayer(exitDamage,KillerAreaManager.DamageType.SpikesDamage);
 		}
 	}
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
-			KillerAreaManager.GetInstance().DamagePlayer(exitDamage);
+            KillerAreaManager.GetInstance().DamagePlayer(exitDamage,KillerAreaManager.DamageType.SpikesDamage);
 		}
 	}
 
@@ -60,7 +60,7 @@ public class KillerArea : MonoBehaviour {
 	{
 		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
-			KillerAreaManager.GetInstance().DamagePlayer(enterDamage);
+            KillerAreaManager.GetInstance().DamagePlayer(enterDamage,KillerAreaManager.DamageType.SpikesDamage);
 		}
 		ExpellPlayer(other.transform);
 	}
@@ -69,7 +69,7 @@ public class KillerArea : MonoBehaviour {
 	{
 		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
-			KillerAreaManager.GetInstance().DamagePlayer(enterDamage);
+            KillerAreaManager.GetInstance().DamagePlayer(enterDamage,KillerAreaManager.DamageType.SpikesDamage);
 		}
 		ExpellPlayer(other.transform);
 	}
@@ -78,7 +78,7 @@ public class KillerArea : MonoBehaviour {
 	{
 		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
-			KillerAreaManager.GetInstance().DamagePlayer(stayDamage * Time.deltaTime);
+            KillerAreaManager.GetInstance().DamagePlayer(stayDamage * Time.deltaTime,KillerAreaManager.DamageType.SpikesDamage);
 		}
 		ExpellPlayer(other.transform);
 	}
@@ -86,14 +86,14 @@ public class KillerArea : MonoBehaviour {
 	{
 		if(other.transform.IsChildOf(KillerAreaManager.GetInstance().player.transform) || other.transform == KillerAreaManager.GetInstance().player.transform)
 		{
-			KillerAreaManager.GetInstance().DamagePlayer(stayDamage * Time.deltaTime);
+            KillerAreaManager.GetInstance().DamagePlayer(stayDamage * Time.deltaTime,KillerAreaManager.DamageType.SpikesDamage);
 		}
 		ExpellPlayer(other.transform);
 	}
 
 	public void OnEnterDamage()
 	{
-		KillerAreaManager.GetInstance().DamagePlayer(enterDamage);
+        KillerAreaManager.GetInstance().DamagePlayer(enterDamage,KillerAreaManager.DamageType.SpikesDamage);
 	}
 
 	public void ExpellPlayer()

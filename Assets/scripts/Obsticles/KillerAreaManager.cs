@@ -16,6 +16,12 @@ public class KillerAreaManager : MonoBehaviour {
 
 	public List<KillerArea> areas = new List<KillerArea>();
 
+    public enum DamageType
+    {
+        Normal,
+        SpikesDamage
+    };
+
 	// Use this for initialization
 	void Start () {
 		if(ourInstance != null)
@@ -29,9 +35,16 @@ public class KillerAreaManager : MonoBehaviour {
 		bunny = player.GetComponent<Bunny>();
 	}
 
-	public void DamagePlayer(float damage)
+    public void DamagePlayer(float damage, DamageType aDamageType = DamageType.Normal)
 	{
 		bunny.reduceHealth(damage);
+        if( bunny.getHealth() < 0)
+        {
+            if(aDamageType == DamageType.SpikesDamage)
+            {
+                BunnyAnimationController.instance.PlayKillExplode();
+            }
+        }
 	}
 
 	public void AddKillerArea(KillerArea area)
