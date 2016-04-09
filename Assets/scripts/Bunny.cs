@@ -22,7 +22,14 @@ public class Bunny : MonoBehaviour {
         {
             bunnyDie();
         }
-	}
+#if UNITY_EDITOR //DEBUG
+        if (Input.GetKeyDown("a"))
+        {
+            reduceHealth(10);
+            Debug.Log(health);
+        }
+#endif
+    }
 
     void FixedUpdate()
     {
@@ -78,8 +85,14 @@ public class Bunny : MonoBehaviour {
         health -= amount;
     }
 
+    public void increaseHealth(int amount)
+    {
+        health += amount;
+    }
+
     private void bunnyDie()
     {
+        Debug.Log("DIE BUNNY, DIE!");
         speed = 0;
         jumpforce = 0;
 
