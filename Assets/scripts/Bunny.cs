@@ -12,12 +12,12 @@ public class Bunny : MonoBehaviour {
     float jumpInput = 0;
     private float health;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         health = 100;
-        GameCamera.instance.Shake();
+        GameCamera.instance.Start();
 	}
 	
 	// Update is called once per frame
@@ -26,13 +26,13 @@ public class Bunny : MonoBehaviour {
         {
             bunnyDie();
         }
-#if UNITY_EDITOR //DEBUG
-        if (Input.GetKeyDown("a"))
-        {
-            reduceHealth(10);
-            Debug.Log(health);
-        }
-#endif
+        #if UNITY_EDITOR //DEBUG
+                if (Input.GetKeyDown("a"))
+                {
+                    reduceHealth(10);
+                    Debug.Log(health);
+                }
+        #endif
     }
 
     void FixedUpdate()
@@ -51,7 +51,7 @@ public class Bunny : MonoBehaviour {
 
         if(OnGroundTest != OnGround && VelocityLastFrame.y <0)
         {
-            GameCamera.instance.Shake();
+            GameCamera.instance.SmallShake();
         }
         OnGround = OnGroundTest;
         VelocityLastFrame = rb.velocity;
