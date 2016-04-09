@@ -44,9 +44,6 @@ public class Bunny : MonoBehaviour {
             jump();
         }
 
-        Debug.Log(horizontalInput);
-
-
         bool OnGroundTest = isOnGround();
 
         if(OnGroundTest != OnGround && VelocityLastFrame.y <0)
