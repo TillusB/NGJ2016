@@ -37,8 +37,12 @@ public class KillerAreaManager : MonoBehaviour {
 
     public void DamagePlayer(float damage, DamageType aDamageType = DamageType.Normal)
 	{
+        if( bunny.getHealth() <= 0)
+        {
+            return;
+        }
 		bunny.reduceHealth(damage);
-        if( bunny.getHealth() < 0)
+        if( bunny.getHealth() <= 0)
         {
             if(aDamageType == DamageType.SpikesDamage)
             {
