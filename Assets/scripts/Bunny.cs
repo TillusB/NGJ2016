@@ -53,7 +53,7 @@ public class Bunny : MonoBehaviour {
 
         if(OnGroundTest != OnGround && VelocityLastFrame.y <0)
         {
-            GameCamera.instance.SmallShake();
+//            GameCamera.instance.SmallShake();
         }
         OnGround = OnGroundTest;
         VelocityLastFrame = rb.velocity;
