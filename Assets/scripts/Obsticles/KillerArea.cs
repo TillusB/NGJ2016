@@ -11,6 +11,7 @@ public class KillerArea : MonoBehaviour {
 
 	public Vector3 expellPoint;
 	public float duration = 0;
+	public bool removeOnRealease = false;
 	
 
 	public enum ExpellDirection
@@ -90,6 +91,16 @@ public class KillerArea : MonoBehaviour {
 		ExpellPlayer(other.transform);
 	}
 
+	public void OnEnterDamage()
+	{
+		KillerAreaManager.GetInstance().DamagePlayer(enterDamage);
+	}
+
+	public void ExpellPlayer()
+	{
+		ExpellPlayer(KillerAreaManager.GetInstance().player.transform);
+	}
+
 	public void ExpellPlayer(Transform playerPoint)
 	{
 		if(expellType == ExpellDirection.DIRECTION)
@@ -112,6 +123,10 @@ public class KillerArea : MonoBehaviour {
 	{
 		Rigidbody2D body = KillerAreaManager.GetInstance().bunny.GetComponent<Rigidbody2D>();
 		body.constraints = RigidbodyConstraints2D.FreezeRotation;
+		if(removeOnRealease)
+		{
+			gameObject.SetActive(false);
+		}
 	}
 
 	#if UNITY_EDITOR

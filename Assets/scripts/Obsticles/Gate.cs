@@ -11,6 +11,7 @@ public class Gate : MonoBehaviour {
 		[System.NonSerialized]
 		public float duration = 0;
 		public float totalDuration;
+		public List<EventDelegate> callback;
 	}
 		
 	public List<DoorPart> door;
@@ -26,9 +27,12 @@ public class Gate : MonoBehaviour {
 			int done = 0;
 			for(int index = 0; index < door.Count; index++)
 			{
+				bool preDone = door[index].duration > door[index].totalDuration;
 				door[index].duration += Time.deltaTime;
 				if(door[index].duration > door[index].totalDuration)
 				{
+					if(!preDone)
+						EventDelegate.Execute(door[index].callback);
 					done++;
 					door[index].obj.transform.rotation = Quaternion.Euler(new Vector3(0,0, door[index].zCurve.Evaluate(1)));
 				}
@@ -44,6 +48,11 @@ public class Gate : MonoBehaviour {
 					doneCallback();
 			}
 		}
+	}
+
+	public void Open()
+	{
+		startOpening = true;
 	}
 
 	public void Open(System.Action onComplete)
