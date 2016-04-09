@@ -5,33 +5,27 @@ using UnityEngine.UI;
 public class GameHandler : MonoBehaviour
 {
     // TODO: Some routine still runs after Bunny Death?
-
-//    const float TimeForEveryState = 5;
-
     public Bunny bunny;
 
     // Controls
     public Button startGameButton;
     public Button restartGameButton;
 
-    // 5 = very good
-    // 0 = dead
-    int bunnyState;
-
     // BunnyStates according to it's health:
-    // 100 -> 5
-    //  80 -> 4
-    //  60 -> 3
-    //  40 -> 2
-    //  20 -> 1
-    //   0 -> dead
+    // 100...81 -> 5 very good
+    //  80...61 -> 4
+    //  60...41 -> 3
+    //  40...21 -> 2
+    //  20...01 -> 1
+    //        0 -> dead
+    int bunnyState;
 
     bool gameOver = false;
     bool gameStarted = false;
 
     float time;
 
-    string[] stateTexts = { "You bleed out :/", "Watch out!!!", "It doesn't get any better!!", "Come on!", "Ouch - what's that?!", "What a nice day to jump around :)" };
+    string[] stateTexts = { "You bleed out :/", "Watch out!!!", "It doesn't get any better!!", "OMG - you're LEAKing!", "Ouch - what's that?!", "What a nice day to jump around :)" };
 
     public Text stateText;
 
