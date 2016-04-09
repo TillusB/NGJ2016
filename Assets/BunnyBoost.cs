@@ -28,4 +28,8 @@ public class BunnyBoost : MonoBehaviour {
 			//Todo lose blood
 		}
 	}
+
+	public void EnableBoost(bool on){
+		enabled = on;
+	}
 }

@@ -18,6 +18,9 @@ public class Bunny : MonoBehaviour {
     public BunnyAnimationController BunnyAnimController;
     public GameHandler gameHandler;
 
+	public BloodSpurter bloodSpurter;
+	public BunnyBoost bunnyBoost;
+
     private bool _doJumpUntilAllowed = false;
 	// Use this for initialization
 	void Start () {

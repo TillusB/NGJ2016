@@ -48,7 +48,7 @@ public class BloodSpurter : MonoBehaviour {
 	}
 
 	public void StartBleeding(){
-		//TODO
+		isBleeding = true;
 	}
 
 

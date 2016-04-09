@@ -47,6 +47,9 @@ public class GameHandler : MonoBehaviour
 
         bunnyState = stateTexts.Length - 1;
         StartCoroutine(ShowStateText(stateTexts[bunnyState]));
+
+		bunny.bloodSpurter.StartBleeding();
+		bunny.bunnyBoost.EnableBoost(true);
     }
 
     public void RestartGame()
