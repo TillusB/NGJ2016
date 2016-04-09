@@ -57,7 +57,7 @@ public class ItemManager : MonoBehaviour {
         }
         if(item.itemEffect == Effect.SPEED)
         {
-            bunny.setSpeed(item.amount);
+            StartCoroutine(SpeedPickup(item.amount));
         }
         if(item.itemEffect == Effect.REDUCEBLEED)
         {
@@ -65,6 +65,15 @@ public class ItemManager : MonoBehaviour {
         }
         Debug.Log("Health: " + bunny.getHealth() + ", Speed: " + bunny.speed);
         item.gameObject.SetActive(false);
+    }
+
+    private IEnumerator SpeedPickup(float time)
+    {
+        float origSpeed = bunny.speed;
+        bunny.setSpeed(bunny.speed + 3);
+        yield return new WaitForSeconds(time);
+        bunny.setSpeed(origSpeed);
+        yield return null;
     }
 
 }

@@ -4,6 +4,12 @@ using System.Collections;
 public class Item : MonoBehaviour {
 
     public ItemManager.Effect itemEffect = ItemManager.Effect.NONE;
+    /// <summary>
+    /// Right now the amout is doing different things depending on effectType:
+    /// HEALTH: Amount of health restored
+    /// SPEED: Duration of +3 speed
+    /// REDUCEBLEED: ???
+    /// </summary>
     public float amount = 0;
 
     public void OnEnable()
