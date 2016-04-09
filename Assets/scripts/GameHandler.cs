@@ -4,28 +4,66 @@ using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {
-    const float TimeForEveryState = 5;
+    // TODO: Some routine still runs after Bunny Death?
+
+//    const float TimeForEveryState = 5;
+
+    public Bunny bunny;
+
+    // Controls
+    public Button startGameButton;
+    public Button restartGameButton;
 
     // 5 = very good
     // 0 = dead
     int bunnyState;
-    // Bunny
+
+    // BunnyStates according to it's health:
+    // 100 -> 5
+    //  80 -> 4
+    //  60 -> 3
+    //  40 -> 2
+    //  20 -> 1
+    //   0 -> dead
 
     bool gameOver = false;
+    bool gameStarted = false;
 
     float time;
 
-    string[] stateTexts = { "You bleed out :/", "Watch out!", "Come on!", "Ouch - what's that?!", "What a nice day to jump around :)" };
+    string[] stateTexts = { "You bleed out :/", "Watch out!!!", "It doesn't get any better!!", "Come on!", "Ouch - what's that?!", "What a nice day to jump around :)" };
 
     public Text stateText;
+
+    public void StartGame()
+    {
+        Debug.Log("Start Game!");
+        gameStarted = true;
+        startGameButton.gameObject.SetActive(false);
+
+        bunnyState = stateTexts.Length - 1;
+        StartCoroutine(ShowStateText(stateTexts[bunnyState]));
+    }
+
+    public void RestartGame()
+    {
+        restartGameButton.gameObject.SetActive(false);
+        gameOver = false;
+
+        StartGame();
+    }
+
+    public void SetGameOver()
+    {
+        gameOver = true;
+        restartGameButton.gameObject.SetActive(true);
+        Debug.Log("You're wasted!");
+    }
 
     // Use this for initialization
     void Start()
     {
-        bunnyState = 5;
-        time = TimeForEveryState;
-
-        // Health: 1...0
+        // Health: 100...0
 
         stateText.enabled = false;
     }
@@ -33,29 +71,33 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bunnyState == 0)
+        if (!gameStarted)
+            return;
+
+        if (bunny.getHealth() <= 0)
         {
-            gameOver = true;
-            Debug.Log("You're wasted!");
+            SetGameOver();
         }
 
-        // every 20 seconds the bunnyStatus should decrease
-        time -= Time.deltaTime;
+        var currentHealth = (float)bunny.getHealth();
+        var currentBunnyState = Mathf.CeilToInt( currentHealth / Bunny.FullHealth * 5f);
 
-        if (time <= 0)
+        Debug.Log(currentHealth / Bunny.FullHealth * 5f);
+
+        Debug.Log(string.Format("health: {0}, bunnyState: {1}", bunny.getHealth(), currentBunnyState));
+
+        if(currentBunnyState != bunnyState)
         {
-            DecreaseBunnyState();
+            bunnyState = currentBunnyState;
 
-            // Reset state time
-            time = TimeForEveryState;
-
-            Debug.Log(string.Format("Decreased state: {0}", bunnyState));
+            AdjustBunnyState();
+            AdjustWorldState();
         }
     }
 
-    void DecreaseBunnyState()
+    void AdjustBunnyState()
     {
-        --bunnyState;
+//        --bunnyState;
         // TODO: Adjust bunny sprite
 
         StartCoroutine(ShowStateText(stateTexts[bunnyState]));
@@ -63,9 +105,9 @@ public class GameHandler : MonoBehaviour
 
     void AdjustWorldState()
     {
-        // TODO: Adjust world state
-        var interpolation = 1 - time / TimeForEveryState; // 0...1
-        Debug.Log(interpolation);
+        // TODO: Adjust world sprites
+
+//        Debug.Log(interpolation);
     }
 
     IEnumerator ShowStateText(string message)
@@ -83,12 +125,13 @@ public class GameHandler : MonoBehaviour
 
             // TODO: fade in / out
 
-            stateText.rectTransform.localScale = new Vector2( 2 + animationState, 2 + animationState);
+            stateText.rectTransform.localScale = new Vector2( 2 + animationState * 0.5f, 2 + animationState * 0.5f);
 
             currentTime -= Time.deltaTime;
 
             yield return null;
         }
+
         // Animation is over
         stateText.enabled = false;
     }

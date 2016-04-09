@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class Bunny : MonoBehaviour {
+    public const int FullHealth = 100;
+
     public float speed = 5;
     public float jumpforce = 15;
 
@@ -16,10 +18,11 @@ public class Bunny : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
-        health = 100;
+
+        health = FullHealth;
         GameCamera.instance.Start();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         if(health <= 0)
@@ -52,7 +55,7 @@ public class Bunny : MonoBehaviour {
         }
         OnGround = OnGroundTest;
         VelocityLastFrame = rb.velocity;
-	
+
 
         Vector2 movement = new Vector2(horizontalInput * speed, rb.velocity.y);
 
@@ -75,7 +78,7 @@ public class Bunny : MonoBehaviour {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpforce, 0));
         }
     }
-    
+
     private bool isOnGround()
     {
         bool onGround = true;
