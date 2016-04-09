@@ -15,12 +15,14 @@ public class Bunny : MonoBehaviour {
     private float health;
 
     public Rigidbody2D rb;
+    public BunnyAnimationController BunnyAnimController;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
-
+        BunnyAnimController = transform.FindChild("BunnySprite").GetComponent<BunnyAnimationController>();
         health = FullHealth;
         GameCamera.instance.Start();
+
 	}
 
 	// Update is called once per frame
@@ -76,10 +78,11 @@ public class Bunny : MonoBehaviour {
         if (isOnGround())
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpforce, 0));
+            BunnyAnimController.DoJump();
         }
     }
 
-    private bool isOnGround()
+    public bool isOnGround()
     {
 		int layerMask = 1 << LayerMask.NameToLayer("Default");
 

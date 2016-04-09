@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: aa86fa4cea4e74353876e4fab6750543
-timeCreated: 1460203264
+timeCreated: 1460214166
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -55,42 +55,23 @@ TextureImporter:
     - name: bunny_idle_0
       rect:
         serializedVersion: 2
-        x: 23
+        x: 22
         y: 3
-        width: 81
+        width: 82
         height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 21.5, y: 34}
-        - {x: 20.5, y: 30}
-        - {x: -22.5, y: 13}
-        - {x: -40.5, y: -5}
-        - {x: -40.5, y: -27}
-        - {x: -35.5, y: -34}
-        - {x: 23.5, y: -34}
-        - {x: 40.5, y: -8}
-        - {x: 40.5, y: 9}
-        - {x: 30.5, y: 34}
-    - name: bunny_idle_1
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 3
-        width: 81
-        height: 73
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 27.5, y: 36.5}
-        - {x: 3.5, y: 36.5}
-        - {x: -40.5, y: -7.5}
-        - {x: -40.5, y: -36.5}
-        - {x: 25.5, y: -36.5}
-        - {x: 40.5, y: -5.5}
-        - {x: 40.5, y: 18.5}
+      - - {x: 19, y: 34}
+        - {x: -22, y: 13}
+        - {x: -41, y: -8}
+        - {x: -41, y: -29}
+        - {x: -31, y: -34}
+        - {x: 24, y: -34}
+        - {x: 41, y: -8}
+        - {x: 41, y: 8}
+        - {x: 31, y: 34}
     outline: []
   spritePackingTag: 
   userData: 
