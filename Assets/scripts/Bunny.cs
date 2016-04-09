@@ -4,17 +4,24 @@ using System.Collections;
 public class Bunny : MonoBehaviour {
     public int speed = 1;
     public float jumpforce = 15;
+
     float horizontalInput = 0;
     float jumpInput = 0;
+    private int health;
+
     Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+        health = 100;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if(health <= 0)
+        {
+            bunnyDie();
+        }
 	}
 
     void FixedUpdate()
@@ -59,5 +66,24 @@ public class Bunny : MonoBehaviour {
             onGround = false;
         }
         return onGround;
+    }
+
+    public void ApplyForce(Vector3 forceVector)
+    {
+        rb.AddForce(forceVector);
+    }
+
+    public void reduceHealth(int amount)
+    {
+        health -= amount;
+    }
+
+    private void bunnyDie()
+    {
+        speed = 0;
+        jumpforce = 0;
+
+        //play death animation
+        //end game
     }
 }
