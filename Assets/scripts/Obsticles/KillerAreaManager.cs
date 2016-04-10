@@ -29,7 +29,7 @@ public class KillerAreaManager : MonoBehaviour {
 	{
 		if(mainCam == null)
 			mainCam = Camera.main;
-		if(mainCam != null)
+		if(mainCam != null && colors != null && bunny != null)
 			mainCam.backgroundColor = colors.Evaluate(1 - bunny.getHealth() / 100.0f);
 	}
 
