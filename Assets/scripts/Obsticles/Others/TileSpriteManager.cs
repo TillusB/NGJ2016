@@ -36,7 +36,6 @@ public class TileSpriteManager : MonoBehaviour {
 
 	public void UpdateSprites(int worldState)
 	{
-		Debug.LogError(worldState.ToString());
 		for(int index = 0; index < spriteSwapers.Count; index++)
 		{
 			spriteSwapers[index].StartSwapTo(worldState);

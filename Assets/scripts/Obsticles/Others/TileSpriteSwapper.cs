@@ -27,13 +27,14 @@ public class TileSpriteSwapper : MonoBehaviour {
 
 	public void StartSwapTo(int bunnyState)
 	{
-		bunnyState = Mathf.Max(1, bunnyState);
+		bunnyState = Mathf.Min(stageSprites.Count-1, bunnyState);
 		if(currentState != bunnyState)
 		{
 			fader.FadeFrom(stageSprites[currentState]);
 			renderer.sprite = stageSprites[bunnyState];
 			isSwapping = true;
 			enabled = true;
+			currentState = bunnyState;
 		}
 	}
 }

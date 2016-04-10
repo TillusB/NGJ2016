@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class ObsticleMover : MonoBehaviour {
 
 	public List<Vector3> pathPoints = new List<Vector3>();
-	bool loop = true;
+	public List<Transform> objs = new List<Transform>();
+	public bool loop = true;
 	public float speed = 1.0f;
 	float totalTime = 0.1f;
 	float time = -1.0f;
@@ -37,7 +38,7 @@ public class ObsticleMover : MonoBehaviour {
 					{
 						movingAt = pathPoints.Count - 1;
 						movingUp = false;
-						totalTime = (pathPoints[movingAt] - pathPoints[movingAt-1]).magnitude / speed;
+						totalTime = (pathPoints[movingAt] - pathPoints[movingAt-1]).magnitude / speed;//use modulu %
 					}
 					else
 						totalTime = (pathPoints[movingAt] - pathPoints[movingAt+1]).magnitude / speed;
@@ -56,11 +57,21 @@ public class ObsticleMover : MonoBehaviour {
 				}
 			}
 			if(movingUp)
-				transform.localPosition = Vector3.Lerp(pathPoints[movingAt], pathPoints[movingAt+1], time/totalTime);
+				SetPos(Vector3.Lerp(pathPoints[movingAt], pathPoints[movingAt+1], time/totalTime));
 			else
-				transform.localPosition = Vector3.Lerp(pathPoints[movingAt], pathPoints[movingAt-1], time/totalTime);
+				SetPos(Vector3.Lerp(pathPoints[movingAt], pathPoints[movingAt-1], time/totalTime));
 		}
 	}
+
+	void SetPos(Vector3 pos)
+	{
+		transform.localPosition = pos;
+		for(int index = 0; index < objs.Count; index++)
+		{
+			objs[index].localPosition = pos;
+		}
+	}
+
 	#if UNITY_EDITOR
 	public void OnDrawGizmos()
 	{

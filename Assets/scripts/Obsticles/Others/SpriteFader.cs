@@ -4,7 +4,7 @@ using System.Collections;
 public class SpriteFader : MonoBehaviour {
 
 	public SpriteRenderer renderer;
-	public const float maxDuration = 0.6f;
+	public const float maxDuration = 2.6f;
 	float duration = 0;
 	public bool isFading = false;
 
