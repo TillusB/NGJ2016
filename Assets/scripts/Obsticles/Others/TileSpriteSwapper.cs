@@ -12,12 +12,28 @@ public class TileSpriteSwapper : MonoBehaviour {
 	[System.NonSerialized]
 	public int currentState = 4;
 
+	public bool createChild = false;
+
 	// Use this for initialization
 	void Start () {
 		transform.position += new Vector3(0,0,0.01f);
+
+		if(createChild)
+		{
+			GameObject obj = new GameObject("ChildFade");
+			obj.transform.parent = transform;
+			fader = obj.AddComponent<SpriteFader>();
+			fader.renderer = obj.AddComponent<SpriteRenderer>();
+			fader.renderer.material = Instantiate(Resources.Load("SpriteSwapperMaterial")) as Material;
+			obj.transform.localPosition = new Vector3(0,0,-0.01f);
+			obj.transform.localScale = Vector3.one;
+		}
+		if(renderer == null)
+			renderer = GetComponent<SpriteRenderer>();
 		if(!isSwapping)
 			enabled = false;
 		TileSpriteManager.GetInstance().AddSwapper(this);
+
 	}
 	
 	// Update is called once per frame
