@@ -68,12 +68,12 @@ public class BunnyAnimationController : MonoBehaviour {
     void DoGroundAnimations()
     {
         
-        if( BunnyScript.currentMovment.x > 0 )
+        if( BunnyScript.rb.velocity.x > 0 )
         {
             anim.Play("bunny_run");
 
         }
-        else if( BunnyScript.currentMovment.x < 0 )
+        else if( BunnyScript.rb.velocity.x < 0 )
         {
             anim.Play("bunny_run");
         }
