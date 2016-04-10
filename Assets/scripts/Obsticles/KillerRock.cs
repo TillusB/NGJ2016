@@ -8,6 +8,7 @@ public class KillerRock : MonoBehaviour {
 	public GameObject boulder;
 	public Rigidbody2D boulderBody;
 	public CircleCollider2D boulderCollider;
+    public AudioSource audioSource;
 	public Gate gate;
 	public void StartFalling()
 	{
@@ -49,6 +50,7 @@ public class KillerRock : MonoBehaviour {
 			boulderBody.constraints = RigidbodyConstraints2D.FreezeAll;
 			boulderBody.isKinematic = true;
 			boulderCollider.isTrigger = false;
+            audioSource.Play();
 			boulderCollider.gameObject.layer = LayerMask.NameToLayer("Default");
 			enabled = false;
 		}

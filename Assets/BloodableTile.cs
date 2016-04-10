@@ -10,16 +10,16 @@ public class BloodableTile : MonoBehaviour {
 	[SerializeField] Sprite sprite3;
 //	bool isBlooded = false;
 
-	int bloodCount = 0;
+	float bloodAmount = 0;
 
-	public void HitByBlood(){
+	public void HitByBlood(float bloodPower){
 //		Debug.Log("HitByBlood! - bloodCount: " + bloodCount);
 		if (!bloodDecalSR.enabled) bloodDecalSR.enabled = true;
-		bloodCount++;
+		bloodAmount += bloodPower;
 
-		if (bloodCount < 20){
+		if (bloodAmount < 6000){
 			bloodDecalSR.sprite = sprite1;
-		}else if (bloodCount < 80){
+		}else if (bloodAmount < 20000){
 			bloodDecalSR.sprite = sprite2;
 		}else{
 			bloodDecalSR.sprite = sprite3;
