@@ -55,13 +55,6 @@ public class KillerAreaManager : MonoBehaviour {
             return;
         }
 		bunny.reduceHealth(damage);
-        if( bunny.getHealth() <= 0)
-        {
-            //if(aDamageType == DamageType.SpikesDamage)
-            //{
-                BunnyAnimationController.instance.PlayKillExplode();
-            //}
-        }
 	}
 
 	public void AddKillerArea(KillerArea area)

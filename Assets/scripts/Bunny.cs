@@ -20,6 +20,7 @@ public class Bunny : MonoBehaviour {
 
 	public BloodSpurter bloodSpurter;
 	public BunnyBoost bunnyBoost;
+	bool hasDied = false;
 
     private bool _doJumpUntilAllowed = false;
 	// Use this for initialization
@@ -151,6 +152,11 @@ public class Bunny : MonoBehaviour {
         speed = 0;
         jumpforce = 0;
 
+		if(!hasDied)
+		{
+			hasDied = true;
+			BunnyAnimationController.instance.PlayKillExplode();
+		}
         //play death animation
         //end game
     }
