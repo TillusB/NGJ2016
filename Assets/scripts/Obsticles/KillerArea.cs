@@ -13,6 +13,7 @@ public class KillerArea : MonoBehaviour {
 	public float duration = 0;
 	public bool removeOnRealease = false;
 	
+    public AudioSource audioSource;
 
 	public enum ExpellDirection
 	{
@@ -63,6 +64,9 @@ public class KillerArea : MonoBehaviour {
             KillerAreaManager.GetInstance().DamagePlayer(enterDamage,KillerAreaManager.DamageType.SpikesDamage);
 		}
 		ExpellPlayer(other.transform);
+
+        if(other.tag.Equals("Player"))
+            audioSource.Play();
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -72,6 +76,9 @@ public class KillerArea : MonoBehaviour {
             KillerAreaManager.GetInstance().DamagePlayer(enterDamage,KillerAreaManager.DamageType.SpikesDamage);
 		}
 		ExpellPlayer(other.transform);
+
+        if(other.tag.Equals("Player"))
+            audioSource.Play();
 	}
 
 	void OnTriggerStay2D(Collider2D other)

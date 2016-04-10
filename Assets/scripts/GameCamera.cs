@@ -21,7 +21,7 @@ public class GameCamera : MonoBehaviour {
 
     }
 
-	public float yOffset = 2.5f;
+	public float yOffset = 2.0f;
     public float dampTime = 0.15f;
     private Vector3 velocity = Vector3.zero;
     private Transform target;

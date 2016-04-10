@@ -40,7 +40,9 @@
 
 
 //				finalColor.a = floor((finalColor.a/0.1)*0.5) * 0.25; //4 colors
-				finalColor.a = floor((finalColor.a/0.1)*0.25) * 0.5; //2 colors 
+//				finalColor.a = floor((finalColor.a/0.1)*0.25) * 0.5; //2 colors 
+				finalColor.a = floor(finalColor.a*4.0) * 0.33333333; //3 colors 
+
 
 				return finalColor;
 			}

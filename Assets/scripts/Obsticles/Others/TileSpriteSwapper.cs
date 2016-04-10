@@ -21,19 +21,25 @@ public class TileSpriteSwapper : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void UpdateSprite (float percentage) {
+		fader.UpdateManualFade(percentage);
 	}
 
-	public void StartSwapTo(int bunnyState)
+	public void Init()
 	{
-		bunnyState = Mathf.Max(1, bunnyState);
-		if(currentState != bunnyState)
-		{
-			fader.FadeFrom(stageSprites[currentState]);
-			renderer.sprite = stageSprites[bunnyState];
-			isSwapping = true;
-			enabled = true;
-		}
+		fader.SetSprite(stageSprites[0]);
 	}
+
+	//public void StartSwapTo(int bunnyState)
+	//{
+	//	bunnyState = Mathf.Min(stageSprites.Count-1, bunnyState);
+	//	if(currentState != bunnyState)
+	//	{
+	//		fader.FadeFrom(stageSprites[currentState]);
+	//		renderer.sprite = stageSprites[bunnyState];
+	//		isSwapping = true;
+	//		enabled = true;
+	//		currentState = bunnyState;
+	//	}
+	//}
 }

@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class KillerAreaManager : MonoBehaviour {
-
+	
 	static KillerAreaManager ourInstance;
 
 	public GameObject player;
 	public Bunny bunny;
 
+	public Camera mainCam;
+
+	public Gradient colors;
 	static public KillerAreaManager GetInstance()
 	{
 		return ourInstance;
@@ -22,6 +25,11 @@ public class KillerAreaManager : MonoBehaviour {
         SpikesDamage
     };
 
+	void Update()
+	{
+		mainCam.backgroundColor = colors.Evaluate(1 - bunny.getHealth() / 100.0f);
+	}
+
 	// Use this for initialization
 	void Start () {
 		if(ourInstance != null)
@@ -33,6 +41,8 @@ public class KillerAreaManager : MonoBehaviour {
 			ourInstance = this;
 		player = GameObject.Find("Bunny");
 		bunny = player.GetComponent<Bunny>();
+		if(mainCam == null)
+			mainCam = Camera.main;
 	}
 
     public void DamagePlayer(float damage, DamageType aDamageType = DamageType.Normal)
@@ -44,10 +54,10 @@ public class KillerAreaManager : MonoBehaviour {
 		bunny.reduceHealth(damage);
         if( bunny.getHealth() <= 0)
         {
-            if(aDamageType == DamageType.SpikesDamage)
-            {
+            //if(aDamageType == DamageType.SpikesDamage)
+            //{
                 BunnyAnimationController.instance.PlayKillExplode();
-            }
+            //}
         }
 	}
 
