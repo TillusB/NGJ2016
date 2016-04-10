@@ -34,6 +34,10 @@ public class GameCamera : MonoBehaviour {
     // Update is called once per frame
     void Update () 
     {
+        if (Application.loadedLevelName == "Intro")
+        {
+            return;
+        }
         if (target)
         {
             Vector3 point = GetComponent<Camera>().WorldToViewportPoint(target.position);
