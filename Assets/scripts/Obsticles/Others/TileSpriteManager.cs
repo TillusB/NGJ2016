@@ -32,13 +32,31 @@ public class TileSpriteManager : MonoBehaviour {
 			return;
 		}
 		ourInstance = this;
+		Invoke("ChangeSprites", 0.5f);
+	}
+
+	void Update()
+	{
+		float percentage = 1.0f - KillerAreaManager.GetInstance().bunny.getHealth() / 100.0f;
+		for(int index = 0; index < spriteSwapers.Count; index++)
+		{
+			spriteSwapers[index].fader.UpdateManualFade(percentage);
+		}
+	}
+
+	public void ChangeSprites()
+	{
+		for(int index = 0; index < spriteSwapers.Count; index++)
+		{
+			spriteSwapers[index].Init();
+		}
 	}
 
 	public void UpdateSprites(int worldState)
 	{
-		for(int index = 0; index < spriteSwapers.Count; index++)
-		{
-			spriteSwapers[index].StartSwapTo(worldState);
-		}
+		//for(int index = 0; index < spriteSwapers.Count; index++)
+		//{
+		//	spriteSwapers[index].StartSwapTo(worldState);
+		//}
 	}
 }

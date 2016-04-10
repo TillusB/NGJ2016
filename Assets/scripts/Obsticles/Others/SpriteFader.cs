@@ -18,20 +18,31 @@ public class SpriteFader : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(isFading)
-		{
-			duration += Time.deltaTime;
-			if(duration < maxDuration)
-			{
-				renderer.material.color = new Color(1, 1, 1, 1 - duration / maxDuration);
-			}
-			else
-			{
-				gameObject.SetActive(false);
-				isFading = false;
-				enabled = false;
-			}
-		}
+		//if(isFading)
+		//{
+		//	duration += Time.deltaTime;
+		//	if(duration < maxDuration)
+		//	{
+		//		renderer.material.color = new Color(1, 1, 1, 1 - duration / maxDuration);
+		//	}
+		//	else
+		//	{
+		//		gameObject.SetActive(false);
+		//		isFading = false;
+		//		enabled = false;
+		//	}
+		//}
+	}
+
+	public void UpdateManualFade(float value)
+	{
+		renderer.material.color = new Color(1, 1, 1, value);
+	}
+
+	public void SetSprite(Sprite sprite)
+	{
+		gameObject.SetActive(true);
+		renderer.sprite = sprite;
 	}
 
 	public void FadeFrom(Sprite sprite)
