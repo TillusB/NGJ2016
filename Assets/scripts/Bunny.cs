@@ -155,11 +155,17 @@ public class Bunny : MonoBehaviour {
 		if(!hasDied)
 		{
 			hasDied = true;
+			Invoke("Hide", 1.1f);
 			BunnyAnimationController.instance.PlayKillExplode();
 		}
         //play death animation
         //end game
     }
+
+	public void Hide()
+	{
+		gameObject.SetActive(false);
+	}
 
     public float getHealth()
     {
