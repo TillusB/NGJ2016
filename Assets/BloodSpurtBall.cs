@@ -8,12 +8,12 @@ public class BloodSpurtBall : MonoBehaviour {
 
 	private Rigidbody2D rb;
 
-	int groundLayerMask;
+	int defaultLayerMask;
 
 	void Awake(){
 		rb = GetComponent<Rigidbody2D>();
 
-		groundLayerMask = 1 << LayerMask.NameToLayer("Default");
+		defaultLayerMask = 1 << LayerMask.NameToLayer("Default");
 	}
 
 	public void Init(Vector3 dir, float lifetime, float speed){
@@ -23,6 +23,7 @@ public class BloodSpurtBall : MonoBehaviour {
 //		dir 
 		dir.x += Random.Range(-0.1f, 0.1f);
 		dir.y += Random.Range(-0.1f, 0.1f);
+		if (rb == null) rb = GetComponent<Rigidbody2D>();
 		rb.AddForce(dir * speed, ForceMode2D.Impulse);
 	}
 
@@ -33,7 +34,7 @@ public class BloodSpurtBall : MonoBehaviour {
 		}	
 
 
-		Collider2D groundColl = Physics2D.OverlapCircle(transform.position, 0.1f, groundLayerMask);
+		Collider2D groundColl = Physics2D.OverlapCircle(transform.position, 0.1f, defaultLayerMask);
 		if (groundColl != null && groundColl.GetComponent<BloodableTile>() != null) groundColl.GetComponent<BloodableTile>().HitByBlood();
 	
 //		if (groundColl)

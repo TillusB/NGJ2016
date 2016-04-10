@@ -8,7 +8,7 @@ public class BloodSpurter : MonoBehaviour {
 
 	[Header("Variables")]
 	[SerializeField] float ballLifetime;
-	[SerializeField] float ballSpeed;
+//	[SerializeField] float ballSpeed;
 	[SerializeField] float ballTimeInterval;
 
 	[SerializeField] float spurtInterval;
@@ -21,12 +21,14 @@ public class BloodSpurter : MonoBehaviour {
 	private float nextBallTime;
 	private float nextSpurtTime;
 
+
+
 	void Update () {
 		if (isBleeding){
-			if (Time.time > nextBallTime){
-				SpawnBloodBall();
-				nextBallTime = Time.time + ballTimeInterval;
-			}
+//			if (Time.time > nextBallTime){
+//				SpawnBloodBall();
+//				nextBallTime = Time.time + ballTimeInterval;
+//			}
 			if (Time.time > nextSpurtTime){
 
 				nextSpurtTime = Time.time + spurtInterval;
@@ -35,16 +37,19 @@ public class BloodSpurter : MonoBehaviour {
 //				spurtSystem.emission.SetBursts(new ParticleSystem.Burst[]{burst});
 
 				spurtSystem.Play();
+
+				SpawnBloodBall(transform.forward, 4f);
+
 //				spurtSystem.emission.SetBursts()
 			}
 		}
 	}
 
 
-	private void SpawnBloodBall(){
+	private void SpawnBloodBall(Vector3 dir, float ballSpeed){
 		BloodSpurtBall bloodBall = Instantiate<BloodSpurtBall>(bloodSpurtBallPrefab);
 		bloodBall.transform.position = transform.position;
-		bloodBall.Init(transform.forward, ballLifetime, ballSpeed);
+		bloodBall.Init(dir, ballLifetime, ballSpeed);
 	}
 
 	public void StartBleeding(){
@@ -54,5 +59,14 @@ public class BloodSpurter : MonoBehaviour {
 
 	public void Boosting(){
 		boostSystem.Play();
+
+//		Debug.Log("boostSystem.transform.forward: " + boostSystem.transform.forward);
+//		
+//		Debug.Log("LookRotation: " + Quaternion.LookRotation(boostSystem.transform.forward));
+//		Debug.Log("rotation * Vector3.forward: " + boostSystem.transform.rotation * Vector3.forward);
+//		Debug.Log("rotation * Vector3.up: " + boostSystem.transform.rotation * Vector3.up);
+//		Debug.Log("rotation * Vector3.right: " + boostSystem.transform.rotation * Vector3.right);
+		SpawnBloodBall(boostSystem.transform.rotation * Vector3.right, 9f);
+
 	}
 }
