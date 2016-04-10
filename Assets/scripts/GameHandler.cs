@@ -69,6 +69,7 @@ public class GameHandler : MonoBehaviour
         gameFinished = true;
 //        ShowStateText(string.Format("Congratulations! You've finished the game in {0} seconds.", time), 10);
         ShowStateText(time.ToString(), 10);
+        Application.LoadLevel(1);
     }
 
     public void SetGameOver()
