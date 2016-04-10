@@ -9,6 +9,7 @@ public class GameHandler : MonoBehaviour
     static GameHandler ourInstance;
 
     public Bunny bunny;
+    public AudioSource audioSource;
 
     public static GameHandler GetInstance()
     {
@@ -50,6 +51,7 @@ public class GameHandler : MonoBehaviour
 
 		bunny.bloodSpurter.StartBleeding();
 		bunny.bunnyBoost.EnableBoost(true);
+        audioSource.Play();
     }
 
     public void RestartGame()
