@@ -34,6 +34,8 @@ public class BunnyAnimationController : MonoBehaviour {
     // Update is called once per frame
     void Update () 
     {
+
+//		Debug.Log("IsPlaying(\"bunny_die\"): " + IsPlaying("bunny_die") + ", BunnyScript.getHealth(): "+ BunnyScript.getHealth()); 
         if(BunnyScript.getHealth() <= 0)
             return;
         

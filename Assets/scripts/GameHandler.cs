@@ -58,12 +58,12 @@ public class GameHandler : MonoBehaviour
     {
         Application.LoadLevel(Application.loadedLevel);
 
-        restartGameButton.gameObject.SetActive(false);
-        gameOver = false;
-
-        bunny.ResurrectBunny();
-
-        StartGame();
+//        restartGameButton.gameObject.SetActive(false);
+//        gameOver = false;
+//
+//        bunny.ResurrectBunny();
+//
+//        StartGame();
     }
 
     public void GameFinished()
