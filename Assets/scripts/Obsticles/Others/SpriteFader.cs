@@ -36,10 +36,15 @@ public class SpriteFader : MonoBehaviour {
 
 	public void FadeFrom(Sprite sprite)
 	{
+		if(isFading)
+		{
+			duration = Mathf.Max(maxDuration - duration, 0);
+		}
+		else
+			duration = 0;
 		gameObject.SetActive(true);
 		enabled = true;
 		isFading = true;
-		duration = 0;
 		renderer.sprite = sprite;
 		renderer.material.color = new Color(1, 1, 1, 1);
 	}
