@@ -140,7 +140,7 @@ public class GameHandler : MonoBehaviour
 
     void AdjustWorldState()
     {
-        // TODO: Adjust world sprites
+		TileSpriteManager.GetInstance().UpdateSprites(bunnyState);
     }
 
     IEnumerator ShowStateText(string message, float animationTime = 2)
