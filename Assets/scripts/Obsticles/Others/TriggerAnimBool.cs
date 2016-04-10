@@ -8,7 +8,6 @@ public class TriggerAnimBool : MonoBehaviour {
 
 	public void TriggerBool()
 	{
-		Debug.LogError("Triggered");
 		anim.SetBool(animName, true);
 	}
 }
