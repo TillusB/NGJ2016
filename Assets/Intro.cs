@@ -11,6 +11,8 @@ public class Intro : MonoBehaviour {
     private float originalCamSize;
 	// Use this for initialization
 	void Start () {
+        introCam.GetComponent<AudioSource>().Stop();
+
         originalCamPos = introCam.transform.position;
         originalCamSize = introCam.orthographicSize;
 	    if(Player != null)
@@ -48,6 +50,7 @@ public class Intro : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         // TODO: Play gun sound
         Debug.Log("BANG!");
+        introCam.GetComponent<AudioSource>().Play();
         while (introCam.orthographicSize < originalCamSize -1)
         {
             introCam.orthographicSize = Mathf.Lerp(introCam.orthographicSize, originalCamSize, Time.deltaTime);
