@@ -8,7 +8,7 @@ TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -30,7 +30,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -61,47 +61,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 12.5, y: 22}
-        - {x: 1.5, y: 22}
-        - {x: -13.5, y: 2}
-        - {x: -13.5, y: -18}
-        - {x: -8.5, y: -25}
-        - {x: -7.5, y: -26}
-        - {x: 26.5, y: -26}
-        - {x: 33.5, y: -17}
-        - {x: 33.5, y: 5}
-        - {x: 15.5, y: 19}
-      - - {x: -33.5, y: -9}
-        - {x: -32.5, y: -10}
-        - {x: -29.5, y: -9}
-        - {x: -29.5, y: -4}
-        - {x: -31.5, y: -2}
-        - {x: -33.5, y: -2}
-      - - {x: -13.5, y: -1}
-        - {x: -10.5, y: 0}
-        - {x: -10.5, y: 3}
-        - {x: -13.5, y: 4}
-        - {x: -15.5, y: 2}
-      - - {x: 29.5, y: 8}
-        - {x: 28.5, y: 5}
-        - {x: 32.5, y: 1}
-        - {x: 33.5, y: 1}
-        - {x: 33.5, y: 6}
-        - {x: 31.5, y: 8}
-      - - {x: 12.5, y: 19}
-        - {x: 12.5, y: 16}
-        - {x: 16.5, y: 12}
-        - {x: 19.5, y: 13}
-        - {x: 19.5, y: 18}
-        - {x: 18.5, y: 20}
-        - {x: 14.5, y: 21}
-      - - {x: 26.5, y: 24}
-        - {x: 29.5, y: 21}
-        - {x: 32.5, y: 22}
-        - {x: 32.5, y: 26}
-        - {x: 27.5, y: 26}
-        - {x: 26.5, y: 25}
+      outline: []
     outline: []
   spritePackingTag: 
   userData: 
